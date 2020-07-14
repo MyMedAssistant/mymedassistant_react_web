@@ -2,6 +2,7 @@ import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import style from '../scss/MedSchedule.module.scss'
 import MedForm from '../components/MedForm'
+import MedItem from '../components/MedItem'
 import React from 'react'
 import axios from 'axios'
 
@@ -52,8 +53,8 @@ class Schedule extends React.Component {
               <div>
                 <Nav />
                   <main  className = {style.medschedule}>
-                  <h1>Add Medication to Schedule</h1>
-                  <MedForm />
+                    <h1>Add Medication to Schedule</h1>
+                 
                   <MedForm onscheduleCreate={this.scheduleCreateHandler} />
                   </main>
                 <Footer />
