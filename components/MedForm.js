@@ -66,11 +66,15 @@ export default class MedForm extends React.Component {
   handleSubmit(event){
     event.preventDefault();
     this.props.onMedCreate(this.state);
-    this.setState({name:''});
+    this.setState({id:''},{name:''},{dose:''},{hours:''},{start:''},{next:''},{end:''});
   }
   render(){
     return (
       <form onSubmit={this.handleSubmit}>
+        <label>
+          Id:
+          <input name="med-id" type="text" value={this.state.id} onChange={this.handleChangeId}></input>
+        </label>        
         <label>
           Name:
           <input name="med-name" type="text" value={this.state.name} onChange={this.handleChangeName}></input>
@@ -83,7 +87,19 @@ export default class MedForm extends React.Component {
           Frequency in Hours:
           <input name="med-hours" type="text" value={this.state.hours} onChange={this.handleChangeHours}></input>
         </label>
-        <button>OK</button>
+        <label>
+          Start Time:
+          <input name="med-start" type="text" value={this.state.start} onChange={this.handleChangeStart}></input>
+        </label>
+        <label>
+          Next Dose:
+          <input name="med-next" type="text" value={this.state.next} onChange={this.handleChangeNext}></input>
+        </label>
+        <label>
+          End Time:
+          <input name="med-end" type="text" value={this.state.end} onChange={this.handleChangeEnd}></input>
+        </label>
+        <button>Submit</button>
       </form>
     )
   }
