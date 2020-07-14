@@ -5,41 +5,35 @@ export default class MedForm extends React.Component {
     super(props)
     this.state = {
 
-      // "id": 1,
-      // "user": 1,
+     
       // "medication": 1,
-      // "hours": 0,
-      // "dosage": "60mg",
-      // "start": "2020-07-14T15:04:00Z",
-      // "next_dosage": "2020-07-15T15:04:00Z",
-      // "end": "2020-07-30T15:05:00Z",
       // "user_id_medication": "Vij_insulin_test"
 
 
       id:0,
-      name:'',
-      dose: '',
+      user:'',
+      dosage: '',
       hours:0,
       start:0,
-      next:0,
+      next_dosage:0,
       end:0,
     }
-    this.handleChangeName = this.handleChangeName.bind(this);
-    this.handleChangeDose = this.handleChangeDose.bind(this);
+    this.handleChangeUser = this.handleChangeUser.bind(this);
+    this.handleChangeDosage = this.handleChangeDosage.bind(this);
     this.handleChangeHours = this.handleChangeHours.bind(this);
     this.handleChangeStart = this.handleChangeStart.bind(this);
-    this.handleChangeNext = this.handleChangeNext.bind(this);
+    this.handleChangeNextDosage = this.handleChangeNextDosage.bind(this);
     this.handleChangeEnd = this.handleChangeEnd.bind(this);
     this.handleChangeId = this.handleChangeId.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  handleChangeName(event){
+  handleChangeUser(event){
     const newName = event.target.value;
     this.setState({
       name: newName,
     })
   }
-  handleChangeDose(event){
+  handleChangeDosage(event){
     const newDose = event.target.value;
     this.setState({
       dose: newDose,
@@ -57,7 +51,7 @@ export default class MedForm extends React.Component {
       start: newStart,
     })
   }
-  handleChangeNext(event){
+  handleChangeNextDosage(event){
     const newNext = event.target.value;
     this.setState({
       next: newNext,
@@ -89,7 +83,7 @@ export default class MedForm extends React.Component {
         </label>        
         <label>
           Name:
-          <input name="med-name" type="text" value={this.state.name} onChange={this.handleChangeName}></input>
+          <input name="med-name" type="text" value={this.state.name} onChange={this.handleChangeUser}></input>
         </label>
         <label>
           Dose:
@@ -105,7 +99,7 @@ export default class MedForm extends React.Component {
         </label>
         <label>
           Next Dose:
-          <input name="med-next" type="text" value={this.state.next} onChange={this.handleChangeNext}></input>
+          <input name="med-next" type="text" value={this.state.next} onChange={this.handleChangeNextDosage}></input>
         </label>
         <label>
           End Time:
