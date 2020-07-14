@@ -65,7 +65,7 @@ export default class MedForm extends React.Component {
   }
   handleSubmit(event){
     event.preventDefault();
-    this.props.onMedCreate(this.state);
+    this.props.onscheduleCreate(this.state);
     this.setState({id:''},{name:''},{dose:''},{hours:''},{start:''},{next:''},{end:''});
   }
   render(){
