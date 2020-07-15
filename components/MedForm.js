@@ -6,10 +6,6 @@ export default class MedForm extends React.Component {
     this.state = {
 
      
-      // "medication": 1,
-      // "user_id_medication": "Vij_insulin_test"
-
-
       id:0,
       user:'',
       dosage: '',
