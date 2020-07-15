@@ -32,17 +32,15 @@ class Schedule extends React.Component {
           }
           schedule['next_dosage']=dateAdd(schedule['last'],'hour',schedule['hours']);
           schedule['end']=schedule['next_dosage']
-          console.log('last =', schedule['last'], 'next = ',schedule['next']);
-          console.log("this is the schedule", schedule);
+          // console.log('last =', schedule['last'], 'next = ',schedule['next']);
+          // console.log("this is the schedule", schedule);
           const response = await axios.post(url, schedule);
           const savedSchedule = response.data;
-          console.log("this is savedSchedule", savedSchedule);
+          // console.log("this is savedSchedule", savedSchedule);
           const updatedMedSchedules = this.state.med_schedules.concat(savedSchedule);
-
           this.setState({
               med_schedules: updatedMedSchedules
-          })
-  
+          });
       }
   
       render() {
