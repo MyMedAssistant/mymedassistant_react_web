@@ -1,10 +1,11 @@
 import Link from 'next/link'
 
 export default function MedItem(props){
+  console.log("I am inside the meditem with this id: and id", props.schedule.id);
   return (
     <>
     <li key={props.schedule.id}>
-      <Link href="/medication/[id]" as={`/medications/${props.schedule.id}`}>
+      <Link href="/medication/[id]" as={`/medication/${props.schedule.id}`}>
         <a>{props.schedule.user_id_medication}</a>
       </Link>
     </li>
