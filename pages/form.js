@@ -18,22 +18,22 @@ class Schedule extends React.Component {
       };
   
       async scheduleCreateHandler(schedule) {
-          schedule['user']=1;
-          schedule['medication']=2;
-          schedule['hours']=6;
+          // schedule['last']=schedule['start'];
+          // schedule['next']=schedule['last'];
+          // schedule['end']=schedule['start'];
           const simulatedData={
-            "user":1,
-            "medication":2,
-            "hours":6,
-            "dosage":"600mg",
-            "start":"2020-07-14T15:04:00Z",
-            "last":"2020-07-14T15:04:00Z",
-            "next_dosage":"2020-07-14T15:04:00Z",
-            "end":"2020-07-14T15:04:00Z",
-            "user_id_medication":"Vij_test"
+            "user": schedule['user'],
+            "medication": schedule['medication'],
+            "hours":schedule['hours'],
+            "dosage":schedule['dosage'],
+            "user_id_medication":schedule['user_id_medication'],
+            "start":schedule['start'],
+            "last":schedule['start'],
+            "next_dosage":schedule['start'],
+            "end":schedule['end'],
           }
           console.log("this is the schedule", schedule);
-          const response = await axios.post(url, schedule);
+          const response = await axios.post(url, simulatedData);
           const savedSchedule = response.data;
           console.log("this is savedSchedule", savedSchedule);
   
@@ -67,14 +67,14 @@ class Schedule extends React.Component {
   export default Schedule
   
   // // export async function getStaticProps() 
-  export async function getServerSideProps() {
+  // export async function getServerSideProps() {
   
-      const response = await fetch(url);
-      const med_schedules = await response.json();
-      return {
-          props: {
-            med_schedules: med_schedules,
-          },
-      }
-  }
+  //     const response = await fetch(url);
+  //     const med_schedules = await response.json();
+  //     return {
+  //         props: {
+  //           med_schedules: med_schedules,
+  //         },
+  //     }
+  // }
   
