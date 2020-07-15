@@ -1,0 +1,16 @@
+$primary-color:#4059ad;
+
+.nav{
+  font-size:2vh;
+  font: cursive;
+  background-color: $primary-color;
+  height: 12vh;
+  button{
+      color:white;
+      background-color: #6b9ac4;
+      border-radius: 1vh;
+      padding:.5vh;
+      margin:1vh;
+
+  }
+}
