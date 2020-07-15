@@ -4,9 +4,9 @@ export default class MedForm extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      user:1,
-      medication:0,
-      dosage:'text',
+      user:'Enter Name',
+      medication:'Enter Med Name',
+      dosage:'Enter Dose',
       hours:24,
       start:new Date(),
       next_dosage:new Date(),
@@ -26,7 +26,7 @@ export default class MedForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChangeUser(event){
-    const newId = event.target.value;
+    const newUser = event.target.value;
     this.setState({
       user: newUser,
     })
@@ -92,26 +92,26 @@ export default class MedForm extends React.Component {
     // }
     return (
       <form onSubmit={this.handleSubmit}>
-        {/* <label>
+        <label>
           User:
           <input name="med-user" type="text" value={this.state.user} onChange={this.handleChangeUser}></input>
-        </label>         */}
-        {/* <label>
+        </label>         
+        <label>
           Medication:
           <input name="medication" type="text" value={this.state.medication} onChange={this.handleChangeMedication}></input>
-        </label> */}
+        </label>
         <label>
-          Your Medication ID as Text:
+          Your User Medication ID as Text:
           <input name="med-user_id_med" type="text" value={this.state.user_id_medication} onChange={this.handleChangeUser_Id_Med}></input>
         </label>
         <label>
           Dose:
           <input name="med-dose" type="text" value={this.state.dosage} onChange={this.handleChangeDosage}></input>
         </label>
-        {/* <label>
+        <label>
           Frequency in Hours:
-          <input name="med-hours" type="text" value={this.state.hours} onChange={this.handleChangeHours}></input>
-        </label> */}
+          <input name="med-hours" type="number" value={this.state.hours} onChange={this.handleChangeHours}></input>
+        </label>
         <label>
           Start Time:
           <input name="med-start" type="date-time local" value={this.state.start} onChange={this.handleChangeStart}></input>
@@ -122,11 +122,11 @@ export default class MedForm extends React.Component {
         </label>
         <label>
           Last Dose:
-          <input name="med-last" type="date-time" value={this.state.last} onChange={this.handleChangeLast}></input>
+          <input name="med-last" type="date-time local" value={this.state.last} onChange={this.handleChangeLast}></input>
         </label>
         <label>
-          End Time:
-          <input name="med-end" type="date" value={this.state.end} onChange={this.handleChangeEnd}></input>
+          End Day:
+          <input name="med-end" type="date-time local" value={this.state.end} onChange={this.handleChangeEnd}></input>
         </label>
         <button>Submit</button>
       </form>
