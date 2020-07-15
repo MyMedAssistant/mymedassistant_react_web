@@ -6,12 +6,16 @@ export default function MedItem(props){
     <>
     <li key={props.schedule.id}>
       <Link href="/medication/[id]" as={`/medication/${props.schedule.id}`}>
-        <a>{props.schedule.user_id_medication}</a>
+        <a><b>User ID:  </b>{props.schedule.user_id_medication}</a>
+        {/* <a>Dosage:  {props.schedule.dosage}</a>
+        <a>Next Dosage: {props.schedule.next_dosage}</a>
+        <a>End Dosage:  {props.schedule.end}</a> */}
       </Link>
     </li>
-    <li>{props.schedule.dosage}</li>
-    <li>{props.schedule.next_dosage}</li>
-    <li>{props.schedule.end}</li>
+    <li><b>Dosage: </b> {props.schedule.dosage}</li>
+    <li><b>Next Dosage: </b>{props.schedule.next_dosage}</li>
+    <li><b>Last Dosage:  </b>{props.schedule.end}</li>
+    <br></br>
     </>
   )
 }

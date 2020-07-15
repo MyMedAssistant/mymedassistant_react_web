@@ -1,4 +1,5 @@
-$primary-color:#4059ad;
+// $primary-color:#4059ad;
+$primary-color:#005983;
 
 .nav{
   font-size:2vh;
@@ -6,8 +7,9 @@ $primary-color:#4059ad;
   background-color: $primary-color;
   height: 12vh;
   button{
-      color:white;
-      background-color: #6b9ac4;
+      color:rgb(77, 72, 72);
+      // background-color: #6b9ac4;
+      background-color: #b3d9ff;
       border-radius: 1vh;
       padding:.5vh;
       margin:1vh;

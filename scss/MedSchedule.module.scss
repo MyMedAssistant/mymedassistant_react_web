@@ -19,8 +19,19 @@
     display: inline-flex;
     // width: 400px;
     flex-direction: column;
-    align-items: right;
+    justify-content: space-evenly;
   }
+  ul{
+    font-size: 2vh;
+    border: 12px black;
+    
+    li{
+      background-color: #f4b942;
+      padding:1vh;
+      width: 30%;
+    }
+  }
+
 }
 // .listitems{
 //   // height: 100vh;
