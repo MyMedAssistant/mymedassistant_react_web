@@ -1,12 +1,16 @@
-import Nav from '../components/nav'
-
-export default function IndexPage() {
+export default function Login() {
   return (
-    <div>
-      <Nav />
-      <div className="hero">
-        <h1 className="title">Next.js + Tailwind CSS</h1>
-      </div>
+    <div className = "login">
+      <h1>This is Login Page</h1>
+      <style jsx>{`
+      .login {
+        font: 35px Helvetica, Arial, sans-serif;
+        background: cornflowerblue;
+        padding:30vh;
+        text-align: center;
+        transition: 100ms ease-in background;
+      }
+      `}</style>
     </div>
   )
 }

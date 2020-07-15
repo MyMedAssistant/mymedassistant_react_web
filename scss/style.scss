@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+
+$primary-color: snow;
+
+body {
+  width:100%;
+  background-color: $primary-color;
+  li {
+    list-style: none;
+  }
+  .btn-pink {
+    @apply bg-pink-300 text-white font-bold py-2 px-6 rounded;
+    font-size: 2vh;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    letter-spacing: 0.5vh;
+  }
+  ul{
+    margin-bottom: 5vh;
+  }
+}
+* {
+  text-align: center;
+  margin: auto;
+}
+label{
+  margin: 2vh;
+  padding: 1vh;
+  font-family: fantasy;
+  font-size: 2vh;
+}
+input{
+  padding:1vh;
+  align-content: center;
+  margin-left: 1vh;
+  border-radius: 1vh;
+}
+form{
+  margin-bottom: 5vh;
+}
+.update{
+  h1{
+    font-family: fantasy;
+    font-size: 5vh;
+    margin:auto;
+    width:100%;
+    text-align: center;
+    margin-top: 3vh;
+  }
+  main{
+    height:100vh;
+  }
+  p{
+    font-family: fantasy;
+    font-size: 3.5vh;
+    margin:auto;
+    width:100%;
+    text-align: center;
+    margin-top: 3vh;
+    margin-bottom:3vh;
+
+  }
+  
+}
+
+@tailwind utilities;
