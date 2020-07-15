@@ -2,25 +2,10 @@ import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import style from '../scss/MedSchedule.module.scss'
 import MedForm from '../components/MedForm'
-import MedItem from '../components/MedItem'
 import React from 'react'
 import axios from 'axios'
 
-const url = 'http://localhost:8000/api/v1/scheduler/';
-
-// export default function AddMedtoForm(){
-//   return(
-//     <div>
-//       <Nav />
-//       <main  className = {style.medschedule}>
-//       <h1>Add Medication to Schedule</h1>
-//       <MedForm />
-//       {/* <MedForm onMedCreate={this.medCreateHandler} /> */}
-//       </main>
-//       <Footer />
-//     </div>
-//   ) 
-// }
+const url = `https://my-medication-assistant.herokuapp.com/api/v1/scheduler/`;
 
 class Schedule extends React.Component {
 
@@ -33,14 +18,19 @@ class Schedule extends React.Component {
       };
   
       async scheduleCreateHandler(schedule) {
-          // schedule['user']= 1;
-          // grocery['price']=100;
+          console.log("this is schedule", schedule);
+          // schedule['user']=1;
+          // schedule['id']=2;
+          schedule['medication']=3;
+          schedule['hours']=24;
+          console.log("this is schedule", schedule);
           const response = await axios.post(url, schedule);
           const savedSchedule = response.data;
+          console.log("this is savedSchedule", savedSchedule)
   
           const updatedMedSchedules = this.state.med_schedules.concat(savedSchedule);
-          // console.log('updatedGroceries IS:', updatedGroceries)
-  
+          console.log("this is updated Med Schedules", updatedMedSchedules)
+
           this.setState({
               med_schedules: updatedMedSchedules
           })
