@@ -50,7 +50,6 @@ export default class MedForm extends React.Component {
     })
   }
   handleChangeStart(event){
-    console.log("this is the event for datepicker", event);
     const newStart = event;
     this.setState({
       start: newStart,
@@ -58,7 +57,7 @@ export default class MedForm extends React.Component {
   }
 
   handleChangeEnd(event){
-    const newEnd = event.target.value;
+    const newEnd = event;
     this.setState({
       end: newEnd,
     })
@@ -99,20 +98,25 @@ export default class MedForm extends React.Component {
           Frequency in Hours:
           <input name="med-hours" type="number" value={this.state.hours} onChange={this.handleChangeHours}></input>
         </label>
-        {/* <label>
-          Start Date:
-          <PickDate />
-        </label> */}
-        {/* <label>
-          Start Day:
-          <input name="med-start" type="date-time local" value={this.state.start} onChange={this.handleChangeStart}>
-          </input>
-        </label> */}
         <label className="form-group">
           Start Day:
           <DatePicker
               selected={ this.state.start }
               onChange={ this.handleChangeStart }
+              showTimeSelect
+              timeFormat="HH:mm"
+              timeIntervals={15}
+              timeCaption="time"
+              dateFormat="MMMM d, yyyy h:mm aa"
+              minDate={new Date()}
+              maxDate={addDays(new Date(), 7)}
+          />
+        </label>
+        <label className="form-group">
+          End Date and Time:
+          <DatePicker
+              selected={ this.state.end }
+              onChange={ this.handleChangeEnd }
               showTimeSelect
               timeFormat="HH:mm"
               timeIntervals={20}
@@ -121,11 +125,6 @@ export default class MedForm extends React.Component {
               minDate={new Date()}
               maxDate={addDays(new Date(), 7)}
           />
-        </label>
-
-        <label>
-          End Day:
-          <input name="med-end" type="date-time local" value={this.state.end} onChange={this.handleChangeEnd}></input>
         </label>
         <button>Submit</button>
       </form>
