@@ -19,7 +19,6 @@ class Schedule extends React.Component {
   
       async scheduleCreateHandler(schedule) {
           schedule['last']=schedule['start'];
-          schedule['end']=schedule['start'];
           // function to calculate the time interval to get the next dose
           function dateAdd(date, interval, units) {
             if(!(date instanceof Date))
@@ -32,6 +31,7 @@ class Schedule extends React.Component {
             return ret;
           }
           schedule['next_dosage']=dateAdd(schedule['last'],'hour',schedule['hours']);
+          schedule['end']=schedule['next_dosage']
           console.log('last =', schedule['last'], 'next = ',schedule['next']);
           console.log("this is the schedule", schedule);
           const response = await axios.post(url, schedule);
