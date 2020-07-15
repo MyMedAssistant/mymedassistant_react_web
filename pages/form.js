@@ -19,31 +19,28 @@ class Schedule extends React.Component {
   
       async scheduleCreateHandler(schedule) {
           schedule['last']=schedule['start'];
-          schedule['next']=schedule['last'];
-          schedule['end']=schedule['start'];
-          // const simulatedData={
-          //   "user": schedule['user'],
-          //   "medication": schedule['medication'],
-          //   "hours":schedule['hours'],
-          //   "dosage":schedule['dosage'],
-          //   "user_id_medication":schedule['user_id_medication'],
-          //   "start":schedule['start'],
-          //   "last":schedule['start'],
-          //   "next_dosage":schedule['start'],
-          //   "end":schedule['end'],
-          // }
-          console.log("this is the schedule", schedule);
+          // function to calculate the time interval to get the next dose
+          function dateAdd(date, interval, units) {
+            if(!(date instanceof Date))
+              return undefined;
+            var ret = new Date(date);
+            var checkRollover = function() { if(ret.getDate() != date.getDate()) ret.setDate(0);};
+            switch(String(interval).toLowerCase()) {
+              case 'hour'   :  ret.setTime(ret.getTime() + units*3600000);  break;
+            }
+            return ret;
+          }
+          schedule['next_dosage']=dateAdd(schedule['last'],'hour',schedule['hours']);
+          schedule['end']=schedule['next_dosage']
+          // console.log('last =', schedule['last'], 'next = ',schedule['next']);
+          // console.log("this is the schedule", schedule);
           const response = await axios.post(url, schedule);
           const savedSchedule = response.data;
-          console.log("this is savedSchedule", savedSchedule);
-          console.log('this is the med schedules in the state', this.state.med_schedules);
+          // console.log("this is savedSchedule", savedSchedule);
           const updatedMedSchedules = this.state.med_schedules.concat(savedSchedule);
-          console.log("this is updated Med Schedules", updatedMedSchedules);
-
           this.setState({
               med_schedules: updatedMedSchedules
-          })
-  
+          });
       }
   
       render() {
