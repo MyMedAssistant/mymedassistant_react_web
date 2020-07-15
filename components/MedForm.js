@@ -6,9 +6,9 @@ export default class MedForm extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      user:'Enter Name',
-      medication:'Enter Med Name',
-      dosage:'Enter Dose',
+      user:'User Name',
+      medication:'Med Name',
+      dosage:'Dose',
       hours:24,
       start:new Date(),
       next_dosage:'',
