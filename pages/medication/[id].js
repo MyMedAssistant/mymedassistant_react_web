@@ -14,7 +14,7 @@ export default function ScheduleDetail(props) {
 
         const response = await axios.delete(url + props.schedule.id)
 
-        router.push('/');
+        router.push('/schedule');
     }
 
     return (

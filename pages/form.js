@@ -18,18 +18,27 @@ class Schedule extends React.Component {
       };
   
       async scheduleCreateHandler(schedule) {
-          console.log("this is schedule", schedule);
-          // schedule['user']=1;
-          // schedule['id']=2;
-          schedule['medication']=3;
-          schedule['hours']=24;
-          console.log("this is schedule", schedule);
+          schedule['user']=1;
+          schedule['medication']=2;
+          schedule['hours']=6;
+          const simulatedData={
+            "user":1,
+            "medication":2,
+            "hours":6,
+            "dosage":"600mg",
+            "start":"2020-07-14T15:04:00Z",
+            "last":"2020-07-14T15:04:00Z",
+            "next_dosage":"2020-07-14T15:04:00Z",
+            "end":"2020-07-14T15:04:00Z",
+            "user_id_medication":"Vij_test"
+          }
+          console.log("this is the schedule", schedule);
           const response = await axios.post(url, schedule);
           const savedSchedule = response.data;
-          console.log("this is savedSchedule", savedSchedule)
+          console.log("this is savedSchedule", savedSchedule);
   
           const updatedMedSchedules = this.state.med_schedules.concat(savedSchedule);
-          console.log("this is updated Med Schedules", updatedMedSchedules)
+          console.log("this is updated Med Schedules", updatedMedSchedules);
 
           this.setState({
               med_schedules: updatedMedSchedules
@@ -57,7 +66,7 @@ class Schedule extends React.Component {
   
   export default Schedule
   
-  // // export async function getStaticProps() {
+  // // export async function getStaticProps() 
   export async function getServerSideProps() {
   
       const response = await fetch(url);
