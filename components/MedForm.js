@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { Component } from 'react';
+import DatePicker from 'react-datepicker';
+import addDays from 'date-fns/addDays'
 
 export default class MedForm extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      user:'Enter Name',
-      medication:'Enter Med Name',
-      dosage:'Enter Dose',
+      user:'User Name',
+      medication:'Med Name',
+      dosage:'Dose',
       hours:24,
       start:new Date(),
       next_dosage:'',
@@ -48,14 +50,14 @@ export default class MedForm extends React.Component {
     })
   }
   handleChangeStart(event){
-    const newStart = event.target.value;
+    const newStart = event;
     this.setState({
       start: newStart,
     })
   }
 
   handleChangeEnd(event){
-    const newEnd = event.target.value;
+    const newEnd = event;
     this.setState({
       end: newEnd,
     })
@@ -68,6 +70,7 @@ export default class MedForm extends React.Component {
   }
   handleSubmit(event){
     event.preventDefault();
+    console.log("this is inside the handlesubmit", this.state);
     this.props.onscheduleCreate(this.state);
     this.setState({user:'', medication:'', dosage:'',hours:'',start:'',next_dosage:'',last:'',end:'',user_id_medication:''});
   }
@@ -95,13 +98,33 @@ export default class MedForm extends React.Component {
           Frequency in Hours:
           <input name="med-hours" type="number" value={this.state.hours} onChange={this.handleChangeHours}></input>
         </label>
-        <label>
-          Start Time:
-          <input name="med-start" type="date-time local" value={this.state.start} onChange={this.handleChangeStart}></input>
+        <label className="form-group">
+          Start Day:
+          <DatePicker
+              selected={ this.state.start }
+              onChange={ this.handleChangeStart }
+              showTimeSelect
+              timeFormat="HH:mm"
+              timeIntervals={15}
+              timeCaption="time"
+              dateFormat="MMMM d, yyyy h:mm aa"
+              minDate={new Date()}
+              maxDate={addDays(new Date(), 7)}
+          />
         </label>
-        <label>
-          End Day:
-          <input name="med-end" type="date-time local" value={this.state.end} onChange={this.handleChangeEnd}></input>
+        <label className="form-group">
+          End Date and Time:
+          <DatePicker
+              selected={ this.state.end }
+              onChange={ this.handleChangeEnd }
+              showTimeSelect
+              timeFormat="HH:mm"
+              timeIntervals={20}
+              timeCaption="time"
+              dateFormat="MMMM d, yyyy h:mm aa"
+              minDate={new Date()}
+              maxDate={addDays(new Date(), 7)}
+          />
         </label>
         <button>Submit</button>
       </form>

@@ -4,6 +4,7 @@ import style from '../scss/MedSchedule.module.scss'
 import MedForm from '../components/MedForm'
 import React from 'react'
 import axios from 'axios'
+import Router from 'next/router';
 
 const url = 'https://my-medication-assistant.herokuapp.com/api/v1/scheduler/';
 
@@ -12,7 +13,7 @@ class Schedule extends React.Component {
       constructor(props) {
           super(props);
           this.state = {
-            med_schedules: props.med_schedules
+            med_schedules: props.med_schedules,
           }
           this.scheduleCreateHandler = this.scheduleCreateHandler.bind(this);
       };
@@ -31,16 +32,15 @@ class Schedule extends React.Component {
             return ret;
           }
           schedule['next_dosage']=dateAdd(schedule['last'],'hour',schedule['hours']);
-          schedule['end']=schedule['next_dosage']
-          // console.log('last =', schedule['last'], 'next = ',schedule['next']);
-          // console.log("this is the schedule", schedule);
           const response = await axios.post(url, schedule);
           const savedSchedule = response.data;
-          // console.log("this is savedSchedule", savedSchedule);
+          console.log("this is savedSchedule after posting", savedSchedule);
           const updatedMedSchedules = this.state.med_schedules.concat(savedSchedule);
           this.setState({
-              med_schedules: updatedMedSchedules
+              med_schedules: updatedMedSchedules,
           });
+          Router.push('/schedule');
+
       }
   
       render() {
