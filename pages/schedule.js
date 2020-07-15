@@ -3,6 +3,7 @@ import Footer from '../components/Footer'
 import style from '../scss/MedSchedule.module.scss'
 import MedItem from '../components/MedItem'
 import React from 'react'
+import Date from '../components/Date'
 
 const url = 'https://my-medication-assistant.herokuapp.com/api/v1/scheduler/';
 
@@ -11,6 +12,7 @@ function Schedule(props){
             <>
               <div>
                 <Nav />
+                  <Date />
                   <main  className = {style.medschedule}>
                     <h1>Medication Schedule</h1>
                       <ul>

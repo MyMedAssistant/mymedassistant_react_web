@@ -9,8 +9,8 @@ export default class MedForm extends React.Component {
       dosage:'Enter Dose',
       hours:24,
       start:new Date(),
-      next_dosage:new Date(),
-      last:new Date(),
+      next_dosage:'',
+      last:'',
       end:new Date(),
       user_id_medication:'text',
     }
@@ -19,8 +19,6 @@ export default class MedForm extends React.Component {
     this.handleChangeDosage = this.handleChangeDosage.bind(this);
     this.handleChangeHours = this.handleChangeHours.bind(this);
     this.handleChangeStart = this.handleChangeStart.bind(this);
-    this.handleChangeLast = this.handleChangeLast.bind(this);
-    this.handleChangeNextDosage = this.handleChangeNextDosage.bind(this);
     this.handleChangeEnd = this.handleChangeEnd.bind(this);
     this.handleChangeUser_Id_Med = this.handleChangeUser_Id_Med.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -55,18 +53,7 @@ export default class MedForm extends React.Component {
       start: newStart,
     })
   }
-  handleChangeNextDosage(event){
-    const newNext = event.target.value;
-    this.setState({
-      next_dosage: newNext,
-    })
-  }
-  handleChangeLast(event){
-    const newLast = event.target.value;
-    this.setState({
-      last: newLast,
-    })
-  }
+
   handleChangeEnd(event){
     const newEnd = event.target.value;
     this.setState({
@@ -86,10 +73,6 @@ export default class MedForm extends React.Component {
   }
 
   render(){
-    // const redirectToReferrer = this.state.redirectToReferrer;
-    // if (redirectToReferrer === true) {
-    //     return <Redirect to="/schedule" />
-    // }
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
@@ -115,14 +98,6 @@ export default class MedForm extends React.Component {
         <label>
           Start Time:
           <input name="med-start" type="date-time local" value={this.state.start} onChange={this.handleChangeStart}></input>
-        </label>
-        <label>
-          Next Dose:
-          <input name="med-next" type="date-time local" value={this.state.next_dosage} onChange={this.handleChangeNextDosage}></input>
-        </label>
-        <label>
-          Last Dose:
-          <input name="med-last" type="date-time local" value={this.state.last} onChange={this.handleChangeLast}></input>
         </label>
         <label>
           End Day:
