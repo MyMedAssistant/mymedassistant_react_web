@@ -4,35 +4,43 @@ export default class MedForm extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-
-     
-      id:0,
-      user:'',
-      dosage: '',
-      hours:0,
-      start:0,
-      next_dosage:0,
-      end:0,
+      user:1,
+      medication:0,
+      dosage:'text',
+      hours:24,
+      start:new Date(),
+      next_dosage:new Date(),
+      last:new Date(),
+      end:new Date(),
+      user_id_medication:'text',
     }
     this.handleChangeUser = this.handleChangeUser.bind(this);
+    this.handleChangeMedication = this.handleChangeMedication.bind(this);
     this.handleChangeDosage = this.handleChangeDosage.bind(this);
     this.handleChangeHours = this.handleChangeHours.bind(this);
     this.handleChangeStart = this.handleChangeStart.bind(this);
+    this.handleChangeLast = this.handleChangeLast.bind(this);
     this.handleChangeNextDosage = this.handleChangeNextDosage.bind(this);
     this.handleChangeEnd = this.handleChangeEnd.bind(this);
-    this.handleChangeId = this.handleChangeId.bind(this);
+    this.handleChangeUser_Id_Med = this.handleChangeUser_Id_Med.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChangeUser(event){
-    const newName = event.target.value;
+    const newId = event.target.value;
     this.setState({
-      name: newName,
+      user: newUser,
+    })
+  }
+  handleChangeMedication(event){
+    const newMedication = event.target.value;
+    this.setState({
+      medication: newMedication,
     })
   }
   handleChangeDosage(event){
-    const newDose = event.target.value;
+    const newDosage = event.target.value;
     this.setState({
-      dose: newDose,
+      dosage: newDosage,
     })
   }
   handleChangeHours(event){
@@ -50,7 +58,13 @@ export default class MedForm extends React.Component {
   handleChangeNextDosage(event){
     const newNext = event.target.value;
     this.setState({
-      next: newNext,
+      next_dosage: newNext,
+    })
+  }
+  handleChangeLast(event){
+    const newLast = event.target.value;
+    this.setState({
+      last: newLast,
     })
   }
   handleChangeEnd(event){
@@ -59,47 +73,60 @@ export default class MedForm extends React.Component {
       end: newEnd,
     })
   }
-  handleChangeId(event){
-    const newId = event.target.value;
+  handleChangeUser_Id_Med(event){
+    const newUser_Id_Med = event.target.value;
     this.setState({
-      id: newId,
+      user_id_medication:newUser_Id_Med,
     })
   }
   handleSubmit(event){
     event.preventDefault();
     this.props.onscheduleCreate(this.state);
-    this.setState({id:''},{name:''},{dose:''},{hours:''},{start:''},{next:''},{end:''});
+    this.setState({user:'', medication:'', dosage:'',hours:'',start:'',next_dosage:'',last:'',end:'',user_id_medication:''});
   }
+
   render(){
+    // const redirectToReferrer = this.state.redirectToReferrer;
+    // if (redirectToReferrer === true) {
+    //     return <Redirect to="/schedule" />
+    // }
     return (
       <form onSubmit={this.handleSubmit}>
+        {/* <label>
+          User:
+          <input name="med-user" type="text" value={this.state.user} onChange={this.handleChangeUser}></input>
+        </label>         */}
+        {/* <label>
+          Medication:
+          <input name="medication" type="text" value={this.state.medication} onChange={this.handleChangeMedication}></input>
+        </label> */}
         <label>
-          Id:
-          <input name="med-id" type="text" value={this.state.id} onChange={this.handleChangeId}></input>
-        </label>        
-        <label>
-          Name:
-          <input name="med-name" type="text" value={this.state.name} onChange={this.handleChangeUser}></input>
+          Your Medication ID as Text:
+          <input name="med-user_id_med" type="text" value={this.state.user_id_medication} onChange={this.handleChangeUser_Id_Med}></input>
         </label>
         <label>
           Dose:
-          <input name="med-dose" type="text" value={this.state.dose} onChange={this.handleChangeDose}></input>
+          <input name="med-dose" type="text" value={this.state.dosage} onChange={this.handleChangeDosage}></input>
         </label>
-        <label>
+        {/* <label>
           Frequency in Hours:
           <input name="med-hours" type="text" value={this.state.hours} onChange={this.handleChangeHours}></input>
-        </label>
+        </label> */}
         <label>
           Start Time:
-          <input name="med-start" type="text" value={this.state.start} onChange={this.handleChangeStart}></input>
+          <input name="med-start" type="date-time local" value={this.state.start} onChange={this.handleChangeStart}></input>
         </label>
         <label>
           Next Dose:
-          <input name="med-next" type="text" value={this.state.next} onChange={this.handleChangeNextDosage}></input>
+          <input name="med-next" type="date-time local" value={this.state.next_dosage} onChange={this.handleChangeNextDosage}></input>
+        </label>
+        <label>
+          Last Dose:
+          <input name="med-last" type="date-time" value={this.state.last} onChange={this.handleChangeLast}></input>
         </label>
         <label>
           End Time:
-          <input name="med-end" type="text" value={this.state.end} onChange={this.handleChangeEnd}></input>
+          <input name="med-end" type="date" value={this.state.end} onChange={this.handleChangeEnd}></input>
         </label>
         <button>Submit</button>
       </form>

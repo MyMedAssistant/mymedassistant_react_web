@@ -2,25 +2,10 @@ import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import style from '../scss/MedSchedule.module.scss'
 import MedForm from '../components/MedForm'
-import MedItem from '../components/MedItem'
 import React from 'react'
 import axios from 'axios'
 
-const url = 'http://localhost:8000/api/v1/scheduler/';
-
-// export default function AddMedtoForm(){
-//   return(
-//     <div>
-//       <Nav />
-//       <main  className = {style.medschedule}>
-//       <h1>Add Medication to Schedule</h1>
-//       <MedForm />
-//       {/* <MedForm onMedCreate={this.medCreateHandler} /> */}
-//       </main>
-//       <Footer />
-//     </div>
-//   ) 
-// }
+const url = `https://my-medication-assistant.herokuapp.com/api/v1/scheduler/`;
 
 class Schedule extends React.Component {
 
@@ -33,14 +18,28 @@ class Schedule extends React.Component {
       };
   
       async scheduleCreateHandler(schedule) {
-          // schedule['user']= 1;
-          // grocery['price']=100;
+          schedule['user']=1;
+          schedule['medication']=2;
+          schedule['hours']=6;
+          const simulatedData={
+            "user":1,
+            "medication":2,
+            "hours":6,
+            "dosage":"600mg",
+            "start":"2020-07-14T15:04:00Z",
+            "last":"2020-07-14T15:04:00Z",
+            "next_dosage":"2020-07-14T15:04:00Z",
+            "end":"2020-07-14T15:04:00Z",
+            "user_id_medication":"Vij_test"
+          }
+          console.log("this is the schedule", schedule);
           const response = await axios.post(url, schedule);
           const savedSchedule = response.data;
+          console.log("this is savedSchedule", savedSchedule);
   
           const updatedMedSchedules = this.state.med_schedules.concat(savedSchedule);
-          // console.log('updatedGroceries IS:', updatedGroceries)
-  
+          console.log("this is updated Med Schedules", updatedMedSchedules);
+
           this.setState({
               med_schedules: updatedMedSchedules
           })
@@ -67,7 +66,7 @@ class Schedule extends React.Component {
   
   export default Schedule
   
-  // // export async function getStaticProps() {
+  // // export async function getStaticProps() 
   export async function getServerSideProps() {
   
       const response = await fetch(url);
