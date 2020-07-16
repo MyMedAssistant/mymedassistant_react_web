@@ -35,7 +35,7 @@ class UpdatedPage extends React.Component{
   }
 
   async scheduleUpdateHandler(schedule) {
-    // console.log("inside the updatehandler with schedule", schedule)
+
     const response = await axios.put(url + this.props.schedule.id, schedule);
     const savedSchedule = response.data;
     this.setState(

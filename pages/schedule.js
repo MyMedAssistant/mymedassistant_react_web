@@ -4,6 +4,7 @@ import style from '../scss/MedSchedule.module.scss'
 import MedItem from '../components/MedItem'
 import React from 'react'
 
+
 const url = 'https://my-medication-assistant.herokuapp.com/api/v1/scheduler/';
 
 function Schedule(props){ 
@@ -13,6 +14,7 @@ function Schedule(props){
                 <Nav />
                   <main  className = {style.medschedule}>
                     <h1>Medication Schedule</h1>
+                    <br></br>
                       <ul>
                       {props.med_schedules.map(schedule=><MedItem key={schedule.id} schedule={schedule}/>)}
                       </ul>                 

@@ -19,14 +19,34 @@
     display: inline-flex;
     // width: 400px;
     flex-direction: column;
-    justify-content: space-evenly;
+    // justify-content: space-evenly;
+    label{
+      text-align: center;
+      background-color: #fbd078;
+      display: flex;
+      // justify-content: flex-start;
+      // flex-grow: 2;
+      justify-content: space-between;
+      input{
+        display: flex;
+      }
+      .form-group{
+        display: flex;
+        justify-content: space-between;
+        div{
+          justify-content: right;
+          justify-content: space-between;
+        }
+      }
+
+    }
   }
   ul{
     font-size: 2vh;
     border: 12px black;
     
     li{
-      background-color: #f4b942;
+      background-color: #fbd078;
       padding:1vh;
       width: 30%;
     }
