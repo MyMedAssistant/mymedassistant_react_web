@@ -45,9 +45,9 @@ class Nav extends Component {
                 <Link href="/form">
                   <button>Add Med</button>
                 </Link>
-                <Link href="/about">
+                {/* <Link href="/about">
                   <button>About Us</button>
-                </Link>
+                </Link> */}
               </div>
             )
             : (
