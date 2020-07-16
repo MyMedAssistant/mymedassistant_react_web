@@ -118,9 +118,7 @@ class UpdatedPage extends React.Component{
         <div className={style.medupdate}>
       <form onSubmit={this.handleSubmit}>
         <h1>{this.state.medication}</h1>
-        <h3>
-          {this.state.user_id_medication}
-        </h3>
+        {/* <h3>{this.state.user_id_medication}</h3> */}
         <label>
           User:
           <input name="med-user" type="text" value={this.state.user} onChange={this.handleChangeUser}></input>
@@ -130,7 +128,7 @@ class UpdatedPage extends React.Component{
           <input name="medication" type="text" value={this.state.medication} onChange={this.handleChangeMedication}></input>
         </label>
         <label>
-          Your User Medication ID as Text:
+          Your User Medication ID:
           <input name="med-user_id_med" type="text" value={this.state.user_id_medication} onChange={this.handleChangeUser_Id_Med}></input>
         </label>
         <label>

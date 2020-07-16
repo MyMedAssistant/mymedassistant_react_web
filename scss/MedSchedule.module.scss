@@ -1,4 +1,13 @@
+$itemcolor: #fbd078;
+$background-color: #6b9ac4;
+$button-fill-color: #b3d9ff;
+$button-text-color: rgb(77, 72, 72);
+
+
 .medschedule{
+  alertbox{
+    width: 30%;
+  }
   h1{
     font-family: fantasy;
     font-size: 5vh;
@@ -9,8 +18,8 @@
   }
   button{
     font-size:1.5vh;
-    color:white;
-    background-color: #6b9ac4;
+    color: $button-text-color;
+    background-color: $button-fill-color;
     border-radius: 1vh;
     padding:1vh;
     margin:1vh;
@@ -22,7 +31,7 @@
     // justify-content: space-evenly;
     label{
       text-align: center;
-      background-color: #fbd078;
+      background-color: $itemcolor;
       display: flex;
       // justify-content: flex-start;
       // flex-grow: 2;
@@ -46,15 +55,16 @@
     border: 12px black;
     
     li{
-      background-color: #fbd078;
+      background-color: $itemcolor;
       padding:1vh;
-      width: 30%;
+      width: 33.33333%;
     }
   }
 
 }
 
 .medupdate{
+  
   h1{
     font-family: fantasy;
     font-size: 5vh;
@@ -66,7 +76,7 @@
   button{
     font-size:1.5vh;
     color:white;
-    background-color: #6b9ac4;
+    background-color: $background-color;
     border-radius: 1vh;
     padding:1vh;
     margin:1vh;
@@ -75,35 +85,42 @@
     display: inline-flex;
     // width: 400px;
     flex-direction: column;
-    justify-content: space-evenly;
+    // justify-content: space-evenly;
     label{
-      font-size: 2vh;
-      border: 12px black;
-      
+      text-align: center;
+      background-color: $itemcolor;
+      display: flex;
+      border-radius: 7px;
+      // justify-content: flex-start;
+      // flex-grow: 2;
+      justify-content: space-between;
       input{
-        background-color: #f4b942;
-        padding:1vh;
-        width: 30%;
+        display: flex;
       }
+      .form-group{
+        display: flex;
+        justify-content: space-between;
+        div{
+          justify-content: right;
+          justify-content: space-between;
+        }
+      }
+
+    }
   }
+  ul{
+    font-size: 2vh;
+    border: 12px black;
+    
+    li{
+      background-color: $itemcolor;
+      padding:1vh;
+      width: 30%;
+    }
   }
 
 }
 
 
-// .listitems{
-//   // height: 100vh;
-//   // overflow:scroll;
-//   display: inline-flex;
-//   width: 200px;
-//   flex-direction: column;
-//   form{
-//     color:red;
-//     background-color: red;
-//   }
-//   label{
-//     color:red;
-//     background-color: red;
-//   }
 
-// }
+

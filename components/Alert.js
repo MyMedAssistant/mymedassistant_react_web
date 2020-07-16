@@ -1,3 +1,4 @@
+import style from '../scss/MedSchedule.module.scss'
 
 const check = function (n) {
     if (n<0){
@@ -14,16 +15,16 @@ function Alert(props) {
     <span className = "alertbox">
       {!newAlert
       ? (<div class="hidden">
-        <div class="my-4 block text-snow-700 text-center bg-yellow-100 px-4 py-2">This is the time left {props.timediff} </div>
+        <div class="my-4 block text-snow-700 text-center bg-yellow-100 px-4 py-2 w-1/3">This is the time left {props.timediff} </div>
         </div>)
         //past due
       : (newAlert=="past due" 
-        ? (<div class="flow-root bg-yellow-400">
-        <div class="my-4 block text-gray-700 text-center bg-red-500 px-4 py-2"><b>{newAlert}</b></div>
+        ? (<div class="flow-root bg-yellow-400 w-1/3">
+        <div class="my-4 block text-gray-700 text-center bg-red-500 px-4 py-2 w-3/4"><b>{newAlert}</b></div>
         </div>)
         //due soon
-        : (<div class="flow-root bg-gray-400">
-          <div class="my-4 block text-black-700 text-center bg-yellow-300 px-4 py-2"><em><b>{newAlert}</b></em></div>
+        : (<div class="flow-root bg-gray-400 w-1/3">
+          <div class="my-4 block text-black-700 text-center bg-yellow-300 px-4 py-2 w-3/4"><em><b>{newAlert}</b></em></div>
           </div>)
         )
       }

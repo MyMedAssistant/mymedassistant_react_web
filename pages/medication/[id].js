@@ -47,6 +47,7 @@ export default function ScheduleDetail(props) {
         </ul>
         <button onClick={() => deleteHandler(props.schedule.id)}>Delete</button>
         <button onClick={() => Router.push('/update/[id]',`/update/${props.schedule.id}`)}>Change</button>
+
         </main>
         <Footer />
         </>
