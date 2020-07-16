@@ -2,10 +2,10 @@ import style from '../scss/MedSchedule.module.scss'
 
 const check = function (n) {
     if (n<0){
-      return "past due";
+      return "PAST DUE !!";
     } else 
     if (n<1){
-      return "due in 2 hours";
+      return "due soon";
     } 
 }
 
@@ -18,12 +18,12 @@ function Alert(props) {
         <div class="my-4 block text-snow-700 text-center bg-yellow-100 px-4 py-2 w-1/3">This is the time left {props.timediff} </div>
         </div>)
         //past due
-      : (newAlert=="past due" 
-        ? (<div class="flow-root bg-yellow-400 w-1/3">
-        <div class="my-4 block text-gray-700 text-center bg-red-500 px-4 py-2 w-3/4"><b>{newAlert}</b></div>
+      : (newAlert=="PAST DUE !!" 
+        ? (<div class="flow-root bg-gray-300 w-1/3">
+        <div class="my-4 block text-black-700 text-center bg-red-400 px-4 py-2 w-3/4"><b>{newAlert}</b></div>
         </div>)
         //due soon
-        : (<div class="flow-root bg-gray-400 w-1/3">
+        : (<div class="flow-root bg-gray-300 w-1/3">
           <div class="my-4 block text-black-700 text-center bg-yellow-300 px-4 py-2 w-3/4"><em><b>{newAlert}</b></em></div>
           </div>)
         )

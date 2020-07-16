@@ -23,8 +23,6 @@ class UpdatedPage extends React.Component{
       end:new Date(props.schedule.end),
       user_id_medication:props.schedule.user_id_medication,
     }
-    this.handleChangeUser = this.handleChangeUser.bind(this);
-    this.handleChangeMedication = this.handleChangeMedication.bind(this);
     this.handleChangeDosage = this.handleChangeDosage.bind(this);
     this.handleChangeHours = this.handleChangeHours.bind(this);
     this.handleChangeLast = this.handleChangeLast.bind(this);
@@ -59,18 +57,6 @@ class UpdatedPage extends React.Component{
     Router.push('/schedule');
   }
 
-  handleChangeUser(event){
-    const newUser = event.target.value;
-    this.setState({
-      user: newUser,
-    })
-  }
-  handleChangeMedication(event){
-    const newMedication = event.target.value;
-    this.setState({
-      medication: newMedication,
-    })
-  }
   handleChangeDosage(event){
     const newDosage = event.target.value;
     this.setState({
@@ -119,14 +105,6 @@ class UpdatedPage extends React.Component{
       <form onSubmit={this.handleSubmit}>
         <h1>{this.state.medication}</h1>
         {/* <h3>{this.state.user_id_medication}</h3> */}
-        <label>
-          User:
-          <input name="med-user" type="text" value={this.state.user} onChange={this.handleChangeUser}></input>
-        </label> 
-        <label>
-          Medication:
-          <input name="medication" type="text" value={this.state.medication} onChange={this.handleChangeMedication}></input>
-        </label>
         <label>
           Your User Medication ID:
           <input name="med-user_id_med" type="text" value={this.state.user_id_medication} onChange={this.handleChangeUser_Id_Med}></input>
