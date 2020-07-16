@@ -35,7 +35,6 @@ class Schedule extends React.Component {
           schedule['next_dosage']=dateAdd(schedule['last'],'hour',schedule['hours']);
           const response = await axios.post(url, schedule);
           const savedSchedules = response.data;
-          // console.log("this is savedSchedule after posting", savedSchedule);
           const updatedMedSchedules = this.state.med_schedules.concat(savedSchedules);
           this.setState({
               med_schedules: updatedMedSchedules,
