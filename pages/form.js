@@ -12,6 +12,7 @@ class Schedule extends React.Component {
 
       constructor(props) {
           super(props);
+          console.log("inside the constructor form")
           this.state = {
             med_schedules: props.med_schedules,
           }
@@ -33,9 +34,8 @@ class Schedule extends React.Component {
           }
           schedule['next_dosage']=dateAdd(schedule['last'],'hour',schedule['hours']);
           const response = await axios.post(url, schedule);
-          const savedSchedule = response.data;
-          console.log("this is savedSchedule after posting", savedSchedule);
-          const updatedMedSchedules = this.state.med_schedules.concat(savedSchedule);
+          const savedSchedules = response.data;
+          const updatedMedSchedules = this.state.med_schedules.concat(savedSchedules);
           this.setState({
               med_schedules: updatedMedSchedules,
           });

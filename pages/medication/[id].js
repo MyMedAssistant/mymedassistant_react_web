@@ -2,6 +2,7 @@ import { useRouter } from 'next/router'
 import axios from 'axios'
 import Nav from '../../components/Nav'
 import style from '../../scss/MedSchedule.module.scss'
+import Router from 'next/router';
 
 
 export default function ScheduleDetail(props) {
@@ -11,9 +12,7 @@ export default function ScheduleDetail(props) {
     const router = useRouter();
 
     async function deleteHandler() {
-
         const response = await axios.delete(url + props.schedule.id)
-
         router.push('/schedule');
     }
 
@@ -33,13 +32,14 @@ export default function ScheduleDetail(props) {
             Start date: {props.schedule.start}
           </li>
           <li>
-            Next dosage date and time: {props.schedule.next_dosage}
+            Next dosage date and time: {Date(props.schedule.next_dosage)}
           </li>
           <li>
-            End dosage date and time: {props.schedule.end}
+            End dosage date and time: {Date(props.schedule.end)}
           </li>
         </ul>
         <button onClick={() => deleteHandler(props.schedule.id)}>Delete</button>
+        <button onClick={() => Router.push('/update/[id]',`/update/${props.schedule.id}`)}>Update</button>
         </main>
         </>
     )
