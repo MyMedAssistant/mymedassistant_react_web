@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import axios from 'axios'
 import Nav from '../../components/Nav'
+import Footer from '../../components/Footer'
 import style from '../../scss/MedSchedule.module.scss'
 import Router from 'next/router';
 
@@ -39,8 +40,9 @@ export default function ScheduleDetail(props) {
           </li>
         </ul>
         <button onClick={() => deleteHandler(props.schedule.id)}>Delete</button>
-        <button onClick={() => Router.push('/update/[id]',`/update/${props.schedule.id}`)}>Update</button>
+        <button onClick={() => Router.push('/update/[id]',`/update/${props.schedule.id}`)}>Edit</button>
         </main>
+        <Footer />
         </>
     )
 }
