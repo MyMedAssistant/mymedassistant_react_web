@@ -1,27 +1,52 @@
 import Link from 'next/link'
+import React, { Component } from 'react';
+import Alert from '../components/Alert'
 
-export default function MedItem(props){
-  console.log("I am inside the meditem with this id: and id", props.schedule.id);
-  return (
+class MedItem extends React.Component {
+  constructor(props) {
+    super(props);
+    //logic to calculate the time difference
+    var minutes = 1000 * 60;
+    var hours = minutes * 60;
+    let d = new Date()
+    const n = new Date(props.schedule.next_dosage)
+    const e = new Date(props.schedule.end)
+    let timeDiff = (n.getTime()-d.getTime())/hours
+    this.state = {
+      id: props.schedule.id,
+      user_id_medication: props.schedule.user_id_medication,
+      next_dosage: n,
+      dosage:props.schedule.dosage,
+      end: e,
+      medication:props.schedule.medication,
+      timing:timeDiff,
+    }
+  }
+  render() {
+    const n = new Date(this.state.next_dosage)
+    const e = new Date(this.state.end)
+
+    return (    
     <>
-    <li key={props.schedule.id}>
-      <Link href="/medication/[id]" as={`/medication/${props.schedule.id}`}>
-        <a>{props.schedule.user_id_medication}</a>
-      </Link>
-    </li>
-    <li>{props.schedule.dosage}</li>
-    <li>{props.schedule.next_dosage}</li>
-    <li>{props.schedule.end}</li>
+
+      <Alert timediff = {this.state.timing}/>
+      <li key={this.state.id}>
+        <Link href="/medication/[id]" as={`/medication/${this.state.id}`}>
+          <a><b>{this.state.user_id_medication}</b></a>
+        </Link>
+      </li>
+      <li><b>Med Name: </b>{this.state.medication}</li>
+      <li><b>Dosage: </b>{this.state.dosage}</li>
+      <li><em>NEXT DOSE:</em></li>
+      <li><b>{n.toLocaleDateString()}</b></li>
+      <li><b>{n.toLocaleTimeString()}</b></li>
+      <li>Prescription Ends: {e.toLocaleDateString()}</li>
+      <br></br>
+
     </>
-  )
+    )
+  }
 }
 
-// "id": 1,
-// "user": 1,
-// "medication": 1,
-// "hours": 0,
-// "dosage": "60mg",
-// "start": "2020-07-14T15:04:00Z",
-// "next_dosage": "2020-07-15T15:04:00Z",
-// "end": "2020-07-30T15:05:00Z",
-// "user_id_medication": "Vij_insulin_test"
+export default MedItem
+

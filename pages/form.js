@@ -4,46 +4,43 @@ import style from '../scss/MedSchedule.module.scss'
 import MedForm from '../components/MedForm'
 import React from 'react'
 import axios from 'axios'
+import Router from 'next/router';
 
-const url = `https://my-medication-assistant.herokuapp.com/api/v1/scheduler/`;
+const url = 'https://my-medication-assistant.herokuapp.com/api/v1/scheduler/';
 
 class Schedule extends React.Component {
 
       constructor(props) {
           super(props);
+          console.log("inside the constructor form")
           this.state = {
-            med_schedules: props.med_schedules
+            med_schedules: props.med_schedules,
           }
           this.scheduleCreateHandler = this.scheduleCreateHandler.bind(this);
       };
   
       async scheduleCreateHandler(schedule) {
-          schedule['user']=1;
-          schedule['medication']=2;
-          schedule['hours']=6;
-          const simulatedData={
-            "user":1,
-            "medication":2,
-            "hours":6,
-            "dosage":"600mg",
-            "start":"2020-07-14T15:04:00Z",
-            "last":"2020-07-14T15:04:00Z",
-            "next_dosage":"2020-07-14T15:04:00Z",
-            "end":"2020-07-14T15:04:00Z",
-            "user_id_medication":"Vij_test"
+          schedule['last']=schedule['start'];
+          // function to calculate the time interval to get the next dose
+          function dateAdd(date, interval, units) {
+            if(!(date instanceof Date))
+              return undefined;
+            var ret = new Date(date);
+            var checkRollover = function() { if(ret.getDate() != date.getDate()) ret.setDate(0);};
+            switch(String(interval).toLowerCase()) {
+              case 'hour'   :  ret.setTime(ret.getTime() + units*3600000);  break;
+            }
+            return ret;
           }
-          console.log("this is the schedule", schedule);
+          schedule['next_dosage']=dateAdd(schedule['last'],'hour',schedule['hours']);
           const response = await axios.post(url, schedule);
-          const savedSchedule = response.data;
-          console.log("this is savedSchedule", savedSchedule);
-  
-          const updatedMedSchedules = this.state.med_schedules.concat(savedSchedule);
-          console.log("this is updated Med Schedules", updatedMedSchedules);
-
+          const savedSchedules = response.data;
+          const updatedMedSchedules = this.state.med_schedules.concat(savedSchedules);
           this.setState({
-              med_schedules: updatedMedSchedules
-          })
-  
+              med_schedules: updatedMedSchedules,
+          });
+          Router.push('/schedule');
+
       }
   
       render() {
@@ -53,8 +50,7 @@ class Schedule extends React.Component {
                 <Nav />
                   <main  className = {style.medschedule}>
                     <h1>Add Medication to Schedule</h1>
-                 
-                  <MedForm onscheduleCreate={this.scheduleCreateHandler} />
+                    <MedForm onscheduleCreate={this.scheduleCreateHandler} />
                   </main>
                 <Footer />
               </div>
@@ -66,7 +62,7 @@ class Schedule extends React.Component {
   
   export default Schedule
   
-  // // export async function getStaticProps() 
+  // export async function getStaticProps() 
   export async function getServerSideProps() {
   
       const response = await fetch(url);

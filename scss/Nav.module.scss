@@ -1,0 +1,20 @@
+// $primary-color:#4059ad;
+$nav-color:#005983;
+$button-fill-color: #b3d9ff;
+$button-text-color: rgb(77, 72, 72);
+
+.nav{
+  font-size:2vh;
+  font: cursive;
+  background-color: $nav-color;
+  height: 12vh;
+  button{
+      color:$button-text-color;
+      // background-color: #6b9ac4;
+      background-color: $button-fill-color;
+      border-radius: 1vh;
+      padding:.5vh;
+      margin:1vh;
+
+  }
+}

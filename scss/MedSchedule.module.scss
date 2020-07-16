@@ -1,15 +1,126 @@
+$itemcolor: #fbd078;
+$background-color: #6b9ac4;
+$button-fill-color: #b3d9ff;
+$button-text-color: rgb(77, 72, 72);
+
+
 .medschedule{
+  alertbox{
+    width: 30%;
+  }
   h1{
     font-family: fantasy;
-    font-size: 12vh;
+    font-size: 5vh;
     margin:auto;
     width:100%;
     text-align: center;
     margin-top:3vh;
   }
+  button{
+    font-size:1.5vh;
+    color: $button-text-color;
+    background-color: $button-fill-color;
+    border-radius: 1vh;
+    padding:1vh;
+    margin:1vh;
+  }
+  form{
+    display: inline-flex;
+    // width: 400px;
+    flex-direction: column;
+    // justify-content: space-evenly;
+    label{
+      text-align: center;
+      background-color: $itemcolor;
+      display: flex;
+      // justify-content: flex-start;
+      // flex-grow: 2;
+      justify-content: space-between;
+      input{
+        display: flex;
+      }
+      .form-group{
+        display: flex;
+        justify-content: space-between;
+        div{
+          justify-content: right;
+          justify-content: space-between;
+        }
+      }
+
+    }
+  }
+  ul{
+    font-size: 2vh;
+    border: 12px black;
+    
+    li{
+      background-color: $itemcolor;
+      padding:1vh;
+      width: 33.33333%;
+    }
+  }
+
+}
+
+.medupdate{
   
+  h1{
+    font-family: fantasy;
+    font-size: 5vh;
+    margin:auto;
+    width:100%;
+    text-align: center;
+    margin-top:3vh;
+  }
+  button{
+    font-size:1.5vh;
+    color:white;
+    background-color: $background-color;
+    border-radius: 1vh;
+    padding:1vh;
+    margin:1vh;
+  }
+  form{
+    display: inline-flex;
+    // width: 400px;
+    flex-direction: column;
+    // justify-content: space-evenly;
+    label{
+      text-align: center;
+      background-color: $itemcolor;
+      display: flex;
+      border-radius: 7px;
+      // justify-content: flex-start;
+      // flex-grow: 2;
+      justify-content: space-between;
+      input{
+        display: flex;
+      }
+      .form-group{
+        display: flex;
+        justify-content: space-between;
+        div{
+          justify-content: right;
+          justify-content: space-between;
+        }
+      }
+
+    }
+  }
+  ul{
+    font-size: 2vh;
+    border: 12px black;
+    
+    li{
+      background-color: $itemcolor;
+      padding:1vh;
+      width: 30%;
+    }
+  }
+
 }
-.listitems{
-  height: 100vh;
-  overflow:scroll;
-}
+
+
+
+

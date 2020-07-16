@@ -1,10 +1,11 @@
-$footercolor: #570e57;
-$primary-color:#e4f4bd;
+$itemcolor: #fbd078;
+$nav-color:#005983;
+
 
 .footer{
   font-size:1vh;
   font: cursive;
-  color: $footercolor;
-  background-color: $primary-color;
+  color: white;
+  background-color: $nav-color;
   height: 5vh;
 }

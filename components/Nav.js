@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React, { Component } from 'react';
+import style from '../scss/Nav.module.scss'
 
 class Nav extends Component {
   constructor() {
@@ -29,7 +30,7 @@ class Nav extends Component {
 
   render() {
     return (
-      <div>
+      <div className = {style.nav}>
         <button onClick={this.showMenu}>
           Menu
         </button>
@@ -39,14 +40,14 @@ class Nav extends Component {
             ? (
               <div className="menu">
                 <Link href="/schedule">
-                  <a>Schedule</a>
-                </Link>
-                <Link href="/about">
-                  <a>About Us</a>
+                  <button>Schedule</button>
                 </Link>
                 <Link href="/form">
-                  <a>Add Med</a>
+                  <button>Add Med</button>
                 </Link>
+                {/* <Link href="/about">
+                  <button>About Us</button>
+                </Link> */}
               </div>
             )
             : (

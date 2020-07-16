@@ -1,16 +1,19 @@
-import React from 'react'
+import React, { Component } from 'react';
+import DatePicker from 'react-datepicker';
+import addDays from 'date-fns/addDays'
+import style from '../scss/MedSchedule.module.scss'
 
 export default class MedForm extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      user:1,
-      medication:0,
-      dosage:'text',
+      user:'User Name',
+      medication:'Med Name',
+      dosage:'Dose',
       hours:24,
       start:new Date(),
-      next_dosage:new Date(),
-      last:new Date(),
+      next_dosage:'',
+      last:'',
       end:new Date(),
       user_id_medication:'text',
     }
@@ -19,14 +22,12 @@ export default class MedForm extends React.Component {
     this.handleChangeDosage = this.handleChangeDosage.bind(this);
     this.handleChangeHours = this.handleChangeHours.bind(this);
     this.handleChangeStart = this.handleChangeStart.bind(this);
-    this.handleChangeLast = this.handleChangeLast.bind(this);
-    this.handleChangeNextDosage = this.handleChangeNextDosage.bind(this);
     this.handleChangeEnd = this.handleChangeEnd.bind(this);
     this.handleChangeUser_Id_Med = this.handleChangeUser_Id_Med.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChangeUser(event){
-    const newId = event.target.value;
+    const newUser = event.target.value;
     this.setState({
       user: newUser,
     })
@@ -50,25 +51,14 @@ export default class MedForm extends React.Component {
     })
   }
   handleChangeStart(event){
-    const newStart = event.target.value;
+    const newStart = event;
     this.setState({
       start: newStart,
     })
   }
-  handleChangeNextDosage(event){
-    const newNext = event.target.value;
-    this.setState({
-      next_dosage: newNext,
-    })
-  }
-  handleChangeLast(event){
-    const newLast = event.target.value;
-    this.setState({
-      last: newLast,
-    })
-  }
+
   handleChangeEnd(event){
-    const newEnd = event.target.value;
+    const newEnd = event;
     this.setState({
       end: newEnd,
     })
@@ -86,47 +76,57 @@ export default class MedForm extends React.Component {
   }
 
   render(){
-    // const redirectToReferrer = this.state.redirectToReferrer;
-    // if (redirectToReferrer === true) {
-    //     return <Redirect to="/schedule" />
-    // }
     return (
-      <form onSubmit={this.handleSubmit}>
-        {/* <label>
+      <form className = {style.medschedule} onSubmit={this.handleSubmit} >
+        <label>
           User:
           <input name="med-user" type="text" value={this.state.user} onChange={this.handleChangeUser}></input>
-        </label>         */}
-        {/* <label>
+        </label>         
+        <label>
           Medication:
           <input name="medication" type="text" value={this.state.medication} onChange={this.handleChangeMedication}></input>
-        </label> */}
+        </label>
         <label>
-          Your Medication ID as Text:
+          Medication ID:
           <input name="med-user_id_med" type="text" value={this.state.user_id_medication} onChange={this.handleChangeUser_Id_Med}></input>
         </label>
         <label>
           Dose:
           <input name="med-dose" type="text" value={this.state.dosage} onChange={this.handleChangeDosage}></input>
         </label>
-        {/* <label>
+        <label>
           Frequency in Hours:
-          <input name="med-hours" type="text" value={this.state.hours} onChange={this.handleChangeHours}></input>
-        </label> */}
-        <label>
-          Start Time:
-          <input name="med-start" type="date-time local" value={this.state.start} onChange={this.handleChangeStart}></input>
+          <input name="med-hours" type="number" value={this.state.hours} onChange={this.handleChangeHours}></input>
         </label>
-        <label>
-          Next Dose:
-          <input name="med-next" type="date-time local" value={this.state.next_dosage} onChange={this.handleChangeNextDosage}></input>
+        <label className="form-group">
+          Start Date:
+          <DatePicker
+              selected={ this.state.start }
+              onChange={ this.handleChangeStart }
+              showTimeSelect
+              timeFormat="HH:mm"
+              timeIntervals={15}
+              timeCaption="time"
+              dateFormat="MMMM d, yyyy h:mm aa"
+              minDate={new Date()}
+              maxDate={addDays(new Date(), 7)}
+          />
         </label>
-        <label>
-          Last Dose:
-          <input name="med-last" type="date-time" value={this.state.last} onChange={this.handleChangeLast}></input>
-        </label>
-        <label>
-          End Time:
-          <input name="med-end" type="date" value={this.state.end} onChange={this.handleChangeEnd}></input>
+        <label className="form-group">
+          End Date:
+          <div>
+          <DatePicker
+              selected={ this.state.end }
+              onChange={ this.handleChangeEnd }
+              showTimeSelect
+              timeFormat="HH:mm"
+              timeIntervals={15}
+              timeCaption="time"
+              dateFormat="MMMM d, yyyy h:mm aa"
+              minDate={new Date()}
+              maxDate={addDays(new Date(), 7)}
+          />
+          </div>
         </label>
         <button>Submit</button>
       </form>
