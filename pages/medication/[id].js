@@ -6,15 +6,18 @@ import style from '../../scss/MedSchedule.module.scss'
 
 export default function ScheduleDetail(props) {
 
+    // console.log("this is inside the id page the props", props)
+
     const url = `https://my-medication-assistant.herokuapp.com/api/v1/scheduler/`;
 
     const router = useRouter();
 
     async function deleteHandler() {
-
         const response = await axios.delete(url + props.schedule.id)
-
         router.push('/schedule');
+    }
+    function updateHandler(){
+      router.push('/update/here')
     }
 
     return (
@@ -33,13 +36,14 @@ export default function ScheduleDetail(props) {
             Start date: {props.schedule.start}
           </li>
           <li>
-            Next dosage date and time: {props.schedule.next_dosage}
+            Next dosage date and time: {Date(props.schedule.next_dosage)}
           </li>
           <li>
-            End dosage date and time: {props.schedule.end}
+            End dosage date and time: {Date(props.schedule.end)}
           </li>
         </ul>
         <button onClick={() => deleteHandler(props.schedule.id)}>Delete</button>
+        <button onClick={() => updateHandler()}>Update</button>
         </main>
         </>
     )
