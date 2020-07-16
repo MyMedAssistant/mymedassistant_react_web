@@ -6,7 +6,8 @@ import React from 'react'
 
 const url = 'https://my-medication-assistant.herokuapp.com/api/v1/scheduler/';
 
-function Schedule(props){  
+function Schedule(props){ 
+    console.log("inside Schedule, this is props", new Date(props.med_schedules[0].next_dosage))
           return (
             <>
               <div>
@@ -14,8 +15,6 @@ function Schedule(props){
                   <main  className = {style.medschedule}>
                     <h1>Medication Schedule</h1>
                       <ul>
-                      {/* <ul className= {style.listitems}> */}
-                      {/* <h3>This is a list of items</h3> */}
                       {props.med_schedules.map(schedule=><MedItem key={schedule.id} schedule={schedule}/>)}
                       </ul>                 
                   </main>

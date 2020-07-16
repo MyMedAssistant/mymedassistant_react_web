@@ -12,6 +12,7 @@ class Schedule extends React.Component {
 
       constructor(props) {
           super(props);
+          console.log("inside the constructor form")
           this.state = {
             med_schedules: props.med_schedules,
           }
