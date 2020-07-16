@@ -2,8 +2,8 @@ import Link from 'next/link'
 import React, { Component } from 'react';
 
 function MedItem(props){
-  console.log("this is next expression with to Locale String", Date(props.schedule.next_dosage).toLocaleString())
-  console.log("this is start expression", Date(props.schedule.start))
+  // console.log("this is next expression with to Locale String", Date(props.schedule.next_dosage).toLocaleString())
+  // console.log("this is start expression", Date(props.schedule.start))
   const d = new Date(props.schedule.next_dosage)
   const e = new Date(props.schedule.end)
   // console.log("this is time difference", Date(props.schedule.next_dosage).getTime()-d.getTime());

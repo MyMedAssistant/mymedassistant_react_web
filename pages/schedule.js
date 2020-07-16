@@ -7,7 +7,6 @@ import React from 'react'
 const url = 'https://my-medication-assistant.herokuapp.com/api/v1/scheduler/';
 
 function Schedule(props){ 
-    console.log("inside Schedule, this is props", new Date(props.med_schedules[0].next_dosage))
           return (
             <>
               <div>
