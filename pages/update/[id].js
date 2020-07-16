@@ -1,7 +1,11 @@
 import style from '../../scss/MedSchedule.module.scss'
+import Footer from '../../components/Footer'
+import Nav from '../../components/Nav'
 import React from 'react'
 import axios from 'axios'
 import Router from 'next/router';
+import DatePicker from 'react-datepicker';
+import addDays from 'date-fns/addDays'
 
 const url = `https://my-medication-assistant.herokuapp.com/api/v1/scheduler/`;
 
@@ -92,7 +96,9 @@ class UpdatedPage extends React.Component{
 
   render(){
     return (
-      <main className={style.medschedule}>
+      <>
+      <Nav />
+        <div className={style.medupdate}>
       <form onSubmit={this.handleSubmit}>
         <h1>{this.state.medication}</h1>
         <h3>
@@ -131,8 +137,8 @@ class UpdatedPage extends React.Component{
               minDate={new Date()}
               maxDate={addDays(new Date(), 7)}
           />
-        </label>
-        <label className="form-group">
+        </label> */}
+        {/* <label className="form-group">
           End Date and Time:
           <DatePicker
               selected={ this.state.end }
@@ -146,9 +152,11 @@ class UpdatedPage extends React.Component{
               maxDate={addDays(new Date(), 7)}
           />
         </label> */}
-        <button>Submit</button>
+        <button>Update</button>
       </form> 
-      </main>
+        </div>
+      <Footer />
+      </>
     )
   }      
 }

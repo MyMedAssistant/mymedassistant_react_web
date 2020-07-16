@@ -33,6 +33,44 @@
   }
 
 }
+
+.medupdate{
+  h1{
+    font-family: fantasy;
+    font-size: 5vh;
+    margin:auto;
+    width:100%;
+    text-align: center;
+    margin-top:3vh;
+  }
+  button{
+    font-size:1.5vh;
+    color:white;
+    background-color: #6b9ac4;
+    border-radius: 1vh;
+    padding:1vh;
+    margin:1vh;
+  }
+  form{
+    display: inline-flex;
+    // width: 400px;
+    flex-direction: column;
+    justify-content: space-evenly;
+    label{
+      font-size: 2vh;
+      border: 12px black;
+      
+      input{
+        background-color: #f4b942;
+        padding:1vh;
+        width: 30%;
+      }
+  }
+  }
+
+}
+
+
 // .listitems{
 //   // height: 100vh;
 //   // overflow:scroll;
