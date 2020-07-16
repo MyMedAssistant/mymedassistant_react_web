@@ -2,11 +2,10 @@ import { useRouter } from 'next/router'
 import axios from 'axios'
 import Nav from '../../components/Nav'
 import style from '../../scss/MedSchedule.module.scss'
+import Router from 'next/router';
 
 
 export default function ScheduleDetail(props) {
-
-    // console.log("this is inside the id page the props", props)
 
     const url = `https://my-medication-assistant.herokuapp.com/api/v1/scheduler/`;
 
@@ -15,9 +14,6 @@ export default function ScheduleDetail(props) {
     async function deleteHandler() {
         const response = await axios.delete(url + props.schedule.id)
         router.push('/schedule');
-    }
-    function updateHandler(){
-      router.push('/update/here')
     }
 
     return (
@@ -43,7 +39,7 @@ export default function ScheduleDetail(props) {
           </li>
         </ul>
         <button onClick={() => deleteHandler(props.schedule.id)}>Delete</button>
-        <button onClick={() => updateHandler()}>Update</button>
+        <button onClick={() => Router.push('/update/[id]',`/update/${props.schedule.id}`)}>Update</button>
         </main>
         </>
     )

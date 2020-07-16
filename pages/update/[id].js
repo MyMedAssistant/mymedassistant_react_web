@@ -3,7 +3,7 @@ import React from 'react'
 import axios from 'axios'
 import Router from 'next/router';
 
-const url = 'https://my-medication-assistant.herokuapp.com/api/v1/scheduler/39'
+const url = `https://my-medication-assistant.herokuapp.com/api/v1/scheduler/`;
 
 class UpdatedPage extends React.Component{
   constructor(props){
@@ -69,7 +69,7 @@ class UpdatedPage extends React.Component{
 export default UpdatedPage
 
 export async function getServerSideProps(context) {
-  const response = await fetch(url);
+  const response = await fetch(`https://my-medication-assistant.herokuapp.com/api/v1/scheduler/${context.params.id}`);
   const schedule = await response.json();
   return {
       props: {
