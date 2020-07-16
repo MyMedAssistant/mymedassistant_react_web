@@ -4,6 +4,7 @@ import style from '../scss/MedSchedule.module.scss'
 import MedItem from '../components/MedItem'
 import React from 'react'
 
+
 const url = 'https://my-medication-assistant.herokuapp.com/api/v1/scheduler/';
 
 function Schedule(props){ 
