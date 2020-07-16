@@ -71,7 +71,6 @@ export default class MedForm extends React.Component {
   }
   handleSubmit(event){
     event.preventDefault();
-    console.log("this is inside the handlesubmit", this.state);
     this.props.onscheduleCreate(this.state);
     this.setState({user:'', medication:'', dosage:'',hours:'',start:'',next_dosage:'',last:'',end:'',user_id_medication:''});
   }
@@ -121,7 +120,7 @@ export default class MedForm extends React.Component {
               onChange={ this.handleChangeEnd }
               showTimeSelect
               timeFormat="HH:mm"
-              timeIntervals={20}
+              timeIntervals={15}
               timeCaption="time"
               dateFormat="MMMM d, yyyy h:mm aa"
               minDate={new Date()}

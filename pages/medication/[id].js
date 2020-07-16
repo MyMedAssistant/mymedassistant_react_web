@@ -16,6 +16,12 @@ export default function ScheduleDetail(props) {
         const response = await axios.delete(url + props.schedule.id)
         router.push('/schedule');
     }
+    
+    console.log("what is in the props here", props);
+
+    const n = new Date(props.schedule.next_dosage)
+    const e = new Date(props.schedule.end)
+    const s = new Date(props.schedule.start)
 
     return (
         <>
@@ -30,17 +36,17 @@ export default function ScheduleDetail(props) {
             Frequency in hours: {props.schedule.hours}
           </li>
           <li>
-            Start date: {props.schedule.start}
+            Start date: {s.toLocaleString()}
           </li>
           <li>
-            Next dosage date and time: {Date(props.schedule.next_dosage)}
+            Next dosage date and time: {n.toLocaleString()}
           </li>
           <li>
-            End dosage date and time: {Date(props.schedule.end)}
+            End dosage date and time: {e.toLocaleString()}
           </li>
         </ul>
         <button onClick={() => deleteHandler(props.schedule.id)}>Delete</button>
-        <button onClick={() => Router.push('/update/[id]',`/update/${props.schedule.id}`)}>Edit</button>
+        <button onClick={() => Router.push('/update/[id]',`/update/${props.schedule.id}`)}>Change</button>
         </main>
         <Footer />
         </>
