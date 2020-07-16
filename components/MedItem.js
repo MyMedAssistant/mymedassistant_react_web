@@ -29,18 +29,19 @@ class MedItem extends React.Component {
     return (    
     <>
 
+      <Alert timediff = {this.state.timing}/>
       <li key={this.state.id}>
         <Link href="/medication/[id]" as={`/medication/${this.state.id}`}>
           <a><b>{this.state.user_id_medication}</b></a>
         </Link>
       </li>
-      <li>Med Name: {this.state.medication}</li>
-      <li>Dosage: {this.state.dosage}</li>
+      <li><b>Med Name: </b>{this.state.medication}</li>
+      <li><b>Dosage: </b>{this.state.dosage}</li>
       <li><em>NEXT DOSE:</em></li>
-      <Alert timediff = {this.state.timing}/>
       <li><b>{n.toLocaleDateString()}</b></li>
       <li><b>{n.toLocaleTimeString()}</b></li>
-      <li>When prescription ends: {e.toLocaleDateString()}</li>
+      <li>Prescription Ends: {e.toLocaleDateString()}</li>
+      <br></br>
 
     </>
     )

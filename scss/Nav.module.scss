@@ -1,15 +1,17 @@
 // $primary-color:#4059ad;
-$primary-color:#005983;
+$nav-color:#005983;
+$button-fill-color: #b3d9ff;
+$button-text-color: rgb(77, 72, 72);
 
 .nav{
   font-size:2vh;
   font: cursive;
-  background-color: $primary-color;
+  background-color: $nav-color;
   height: 12vh;
   button{
-      color:rgb(77, 72, 72);
+      color:$button-text-color;
       // background-color: #6b9ac4;
-      background-color: #b3d9ff;
+      background-color: $button-fill-color;
       border-radius: 1vh;
       padding:.5vh;
       margin:1vh;
