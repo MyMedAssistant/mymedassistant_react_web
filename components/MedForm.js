@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import DatePicker from 'react-datepicker';
 import addDays from 'date-fns/addDays'
+import style from '../scss/MedSchedule.module.scss'
 
 export default class MedForm extends React.Component {
   constructor(props){
@@ -77,7 +78,7 @@ export default class MedForm extends React.Component {
 
   render(){
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className = {style.medschedule} onSubmit={this.handleSubmit} >
         <label>
           User:
           <input name="med-user" type="text" value={this.state.user} onChange={this.handleChangeUser}></input>
@@ -87,7 +88,7 @@ export default class MedForm extends React.Component {
           <input name="medication" type="text" value={this.state.medication} onChange={this.handleChangeMedication}></input>
         </label>
         <label>
-          Your User Medication ID as Text:
+          Medication ID:
           <input name="med-user_id_med" type="text" value={this.state.user_id_medication} onChange={this.handleChangeUser_Id_Med}></input>
         </label>
         <label>
@@ -99,7 +100,7 @@ export default class MedForm extends React.Component {
           <input name="med-hours" type="number" value={this.state.hours} onChange={this.handleChangeHours}></input>
         </label>
         <label className="form-group">
-          Start Day:
+          Start Date:
           <DatePicker
               selected={ this.state.start }
               onChange={ this.handleChangeStart }
@@ -113,7 +114,8 @@ export default class MedForm extends React.Component {
           />
         </label>
         <label className="form-group">
-          End Date and Time:
+          End Date:
+          <div>
           <DatePicker
               selected={ this.state.end }
               onChange={ this.handleChangeEnd }
@@ -125,6 +127,7 @@ export default class MedForm extends React.Component {
               minDate={new Date()}
               maxDate={addDays(new Date(), 7)}
           />
+          </div>
         </label>
         <button>Submit</button>
       </form>

@@ -14,6 +14,7 @@ function Schedule(props){
                 <Nav />
                   <main  className = {style.medschedule}>
                     <h1>Medication Schedule</h1>
+                    <br></br>
                       <ul>
                       {props.med_schedules.map(schedule=><MedItem key={schedule.id} schedule={schedule}/>)}
                       </ul>                 

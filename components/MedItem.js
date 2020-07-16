@@ -28,6 +28,7 @@ class MedItem extends React.Component {
 
     return (    
     <>
+
       <li key={this.state.id}>
         <Link href="/medication/[id]" as={`/medication/${this.state.id}`}>
           <a><b>{this.state.user_id_medication}</b></a>
@@ -40,6 +41,7 @@ class MedItem extends React.Component {
       <li><b>{n.toLocaleDateString()}</b></li>
       <li><b>{n.toLocaleTimeString()}</b></li>
       <li>When prescription ends: {e.toLocaleDateString()}</li>
+
     </>
     )
   }
