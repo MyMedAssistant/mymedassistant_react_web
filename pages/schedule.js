@@ -13,6 +13,7 @@ function Schedule(props){
                 <Nav />
                   <main  className = {style.medschedule}>
                     <h1>Medication Schedule</h1>
+                    <br></br>
                       <ul>
                       {/* <ul className= {style.listitems}> */}
                       {/* <h3>This is a list of items</h3> */}

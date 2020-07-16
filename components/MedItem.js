@@ -14,6 +14,7 @@ export default function MedItem(props){
     <li>Dosage: {props.schedule.dosage}</li>
     <li>Next Dose is Due: {props.schedule.next_dosage}</li>
     <li>When prescription ends: {props.schedule.end}</li>
+    <br></br>
     </>
   )
 }

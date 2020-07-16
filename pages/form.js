@@ -50,8 +50,7 @@ class Schedule extends React.Component {
                 <Nav />
                   <main  className = {style.medschedule}>
                     <h1>Add Medication to Schedule</h1>
-                 
-                  <MedForm onscheduleCreate={this.scheduleCreateHandler} />
+                    <MedForm onscheduleCreate={this.scheduleCreateHandler} />
                   </main>
                 <Footer />
               </div>
