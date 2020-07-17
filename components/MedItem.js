@@ -37,7 +37,7 @@ class MedItem extends React.Component {
       </li>
       <li><b>Med Name: </b>{this.state.medication}</li>
       <li><b>Dosage: </b>{this.state.dosage}</li>
-      <li><b>Inventory: </b>{this.state.dosage_count}</li>
+      {/* <li><b>Inventory: </b>{this.state.dosage_count}</li> */}
       <li><em>NEXT DOSE:</em></li>
       <li><b>{n.toLocaleDateString()}</b></li>
       <li><b>{n.toLocaleTimeString()}</b></li>
