@@ -121,10 +121,10 @@ class UpdatedPage extends React.Component{
           Dose:
           <input name="med-dose" type="text" value={this.state.dosage} onChange={this.handleChangeDosage}></input>
         </label>
-        <label>
+        {/* <label>
           Inventory:
           <input name="med-dosage_count" type="text" value={this.state.dosage_count} onChange={this.handleChangeDosageCount}></input>
-        </label>
+        </label> */}
         <label>
           Frequency in Hours:
           <input name="med-hours" type="number" value={this.state.hours} onChange={this.handleChangeHours}></input>

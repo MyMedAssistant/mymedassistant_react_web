@@ -32,9 +32,9 @@ export default function ScheduleDetail(props) {
           <li>
             Dose:  {props.schedule.dosage}
           </li>
-          <li>
+          {/* <li>
             Inventory:  {props.schedule.dosage_count}
-          </li>
+          </li> */}
           <li>
             Frequency in hours: {props.schedule.hours}
           </li>
