@@ -7,13 +7,13 @@ $button-text-color: rgb(77, 72, 72);
   font-size:2vh;
   font: cursive;
   background-color: $nav-color;
-  height: 12vh;
+  height: 15vh;
   button{
       color:$button-text-color;
       // background-color: #6b9ac4;
       background-color: $button-fill-color;
       border-radius: 1vh;
-      padding:.5vh;
+      padding:1vh;
       margin:1vh;
 
   }

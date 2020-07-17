@@ -106,7 +106,7 @@ class UpdatedPage extends React.Component{
         <h1>{this.state.medication}</h1>
         {/* <h3>{this.state.user_id_medication}</h3> */}
         <label>
-          Your User Medication ID:
+          Medication ID:
           <input name="med-user_id_med" type="text" value={this.state.user_id_medication} onChange={this.handleChangeUser_Id_Med}></input>
         </label>
         <label>
@@ -118,7 +118,7 @@ class UpdatedPage extends React.Component{
           <input name="med-hours" type="number" value={this.state.hours} onChange={this.handleChangeHours}></input>
         </label>
         <label className="form-group">
-          Last Dosage Taken On:
+          Last Dosage:     
           <DatePicker
               selected={ this.state.last}
               onChange={ this.handleChangeLast }
@@ -132,7 +132,7 @@ class UpdatedPage extends React.Component{
           />
         </label>
         <label className="form-group">
-          End Date and Time:
+          Final Dosage:
           <DatePicker
               selected={ this.state.end }
               onChange={ this.handleChangeEnd }
