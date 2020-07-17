@@ -10,6 +10,7 @@ export default class MedForm extends React.Component {
       user:'',
       medication:'',
       dosage:'',
+      dosage_count:'',
       hours:24,
       start:new Date(),
       next_dosage:'',
@@ -20,6 +21,7 @@ export default class MedForm extends React.Component {
     this.handleChangeUser = this.handleChangeUser.bind(this);
     this.handleChangeMedication = this.handleChangeMedication.bind(this);
     this.handleChangeDosage = this.handleChangeDosage.bind(this);
+    this.handleChangeDosage_count = this.handleChangeDosage_count.bind(this);
     this.handleChangeHours = this.handleChangeHours.bind(this);
     this.handleChangeStart = this.handleChangeStart.bind(this);
     this.handleChangeEnd = this.handleChangeEnd.bind(this);
@@ -42,6 +44,13 @@ export default class MedForm extends React.Component {
     const newDosage = event.target.value;
     this.setState({
       dosage: newDosage,
+    })
+  }
+
+  handleChangeDosage_count(event){
+    const newDosage_count = event.target.value;
+    this.setState({
+      dosage_count: newDosage_count,
     })
   }
   handleChangeHours(event){
@@ -72,7 +81,7 @@ export default class MedForm extends React.Component {
   handleSubmit(event){
     event.preventDefault();
     this.props.onscheduleCreate(this.state);
-    this.setState({user:'', medication:'', dosage:'',hours:'',start:'',next_dosage:'',last:'',end:'',user_id_medication:''});
+    this.setState({user:'', medication:'', dosage:'', dosage_count:'', hours:'',start:'',next_dosage:'',last:'',end:'',user_id_medication:''});
   }
 
   render(){
@@ -93,6 +102,10 @@ export default class MedForm extends React.Component {
         <label>
           Dose:
           <input name="med-dose" type="text" value={this.state.dosage} onChange={this.handleChangeDosage}></input>
+        </label>
+        <label>
+          Inventory:
+          <input name="med-dosage_count" type="text" value={this.state.dosage_count} onChange={this.handleChangedosage_count}></input>
         </label>
         <label>
           Frequency in Hours:

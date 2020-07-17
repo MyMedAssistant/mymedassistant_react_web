@@ -16,6 +16,7 @@ class UpdatedPage extends React.Component{
       user: props.schedule.user,
       medication:props.schedule.medication,
       dosage:props.schedule.dosage,
+      dosage_count:props.schedule.dosage_count,
       hours:props.schedule.hours,
       start:props.schedule.start,
       next_dosage:props.schedule.next_dosage,
@@ -24,6 +25,7 @@ class UpdatedPage extends React.Component{
       user_id_medication:props.schedule.user_id_medication,
     }
     this.handleChangeDosage = this.handleChangeDosage.bind(this);
+    this.handleChangeDosageCount = this.handleChangeDosageCount.bind(this);
     this.handleChangeHours = this.handleChangeHours.bind(this);
     this.handleChangeLast = this.handleChangeLast.bind(this);
     this.handleChangeEnd = this.handleChangeEnd.bind(this);
@@ -63,6 +65,12 @@ class UpdatedPage extends React.Component{
       dosage: newDosage,
     })
   }
+  handleChangeDosageCount(event){
+    const newDosage = event.target.value;
+    this.setState({
+      dosage_count: newDosage,
+    })
+  }
   handleChangeHours(event){
     const newHours = event.target.value;
     this.setState({
@@ -92,7 +100,7 @@ class UpdatedPage extends React.Component{
 
   handleSubmit(event){
     event.preventDefault();
-    this.setState({user:'', medication:'', dosage:'',hours:'',start:'',next_dosage:'',last:'',end:'',user_id_medication:''});
+    this.setState({user:'', medication:'', dosage:'', dosage_count:'', hours:'',start:'',next_dosage:'',last:'',end:'',user_id_medication:''});
     console.log("this is state in submit", this.state)
     this.scheduleUpdateHandler(this.state);
   }
@@ -112,6 +120,10 @@ class UpdatedPage extends React.Component{
         <label>
           Dose:
           <input name="med-dose" type="text" value={this.state.dosage} onChange={this.handleChangeDosage}></input>
+        </label>
+        <label>
+          Inventory:
+          <input name="med-dosage_count" type="text" value={this.state.dosage_count} onChange={this.handleChangeDosageCount}></input>
         </label>
         <label>
           Frequency in Hours:
