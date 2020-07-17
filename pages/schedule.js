@@ -2,39 +2,29 @@ import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import style from '../scss/MedSchedule.module.scss'
 import MedItem from '../components/MedItem'
-import React from 'react'
+import React, { useContext } from 'react'
+import AppContext from '../components/AppContext';
 
+function Schedule(props) {
 
-const url = 'https://my-medication-assistant.herokuapp.com/api/v1/scheduler/';
+    const { schedules } = useContext(AppContext);
 
-function Schedule(props){ 
-          return (
-            <>
-              <div>
+    return (
+        <>
+            <div>
                 <Nav />
-                  <main  className = {style.medschedule}>
+                <main className={style.medschedule}>
                     <h1>Medication Schedule</h1>
                     <br></br>
-                      <ul>
-                      {props.med_schedules.map(schedule=><MedItem key={schedule.id} schedule={schedule}/>)}
-                      </ul>                 
-                  </main>
+                    <ul>
+                        {schedules.map(schedule => <MedItem key={schedule.id} schedule={schedule} />)}
+                    </ul>
+                </main>
                 <Footer />
-              </div>
-             </>
-          )
-  }
-  
-  export default Schedule
-  
-  export async function getServerSideProps() {
-  
-      const response = await fetch(url);
-      const med_schedules = await response.json();
-      return {
-          props: {
-            med_schedules: med_schedules,
-          },
-      }
-  }
-  
+            </div>
+        </>
+    )
+}
+
+export default Schedule
+
