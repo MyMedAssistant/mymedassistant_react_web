@@ -3,24 +3,25 @@ import Footer from '../../components/Footer'
 import Nav from '../../components/Nav'
 import React, { useContext } from 'react'
 import AppContext from '../../components/AppContext';
-import axios from 'axios'
 import Router from 'next/router';
 import DatePicker from 'react-datepicker';
 import addDays from 'date-fns/addDays'
+import { useRouter } from 'next/router'
 
-const url = `https://my-medication-assistant.herokuapp.com/api/v1/scheduler/`;
+export default function UpdatePage() {
+    const { schedules, updateSchedule } = useContext(AppContext);
+    const router = useRouter();
+    const schedule = schedules.find(item => item.id == router.query.id);
+    return (
+        <UpdatePageForm schedule={schedule} onUpdate={updateSchedule} />
+    )
+}
 
-class UpdatedPage extends React.Component {
-
-    static async getInitialProps({ query }) {
-        return { id: query.id }
-    }
-
+class UpdatePageForm extends React.Component {
     constructor(props) {
         super(props)
-
-
         this.state = {
+            id: props.schedule.id,
             user: props.schedule.user,
             medication: props.schedule.medication,
             dosage: props.schedule.dosage,
@@ -37,19 +38,9 @@ class UpdatedPage extends React.Component {
         this.handleChangeEnd = this.handleChangeEnd.bind(this);
         this.handleChangeUser_Id_Med = this.handleChangeUser_Id_Med.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-
     }
-
-    componentDidMount() {
-        const { schedules, id } = this.context;
-
-        console.log('page id', id);
-
-    }
-
     async scheduleUpdateHandler(schedule) {
         console.log("checking schedule in updatehandler", schedule)
-
         function dateAdd(date, interval, units) {
             if (!(date instanceof Date))
                 return undefined;
@@ -60,18 +51,13 @@ class UpdatedPage extends React.Component {
             }
             return ret;
         }
-
         schedule['next_dosage'] = dateAdd(schedule['last'], 'hour', schedule['hours']);
-
         console.log("checking schedule in updatehandler after updating it", schedule)
-
-        const response = await axios.put(url + this.props.schedule.id, schedule);
-        const savedSchedule = response.data;
-
-
+        // const response = await axios.put(url + this.props.schedule.id, schedule);
+        // const savedSchedule = response.data;
+        await this.props.onUpdate(schedule);
         Router.push('/schedule');
     }
-
     handleChangeDosage(event) {
         const newDosage = event.target.value;
         this.setState({
@@ -90,32 +76,25 @@ class UpdatedPage extends React.Component {
             last: newLast,
         })
     }
-
     handleChangeEnd(event) {
         const newEnd = event;
         this.setState({
             end: newEnd,
         })
     }
-
     handleChangeUser_Id_Med(event) {
         const newUser_Id_Med = event.target.value;
         this.setState({
             user_id_medication: newUser_Id_Med,
         })
     }
-
     handleSubmit(event) {
         event.preventDefault();
         this.setState({ user: '', medication: '', dosage: '', hours: '', start: '', next_dosage: '', last: '', end: '', user_id_medication: '' });
         console.log("this is state in submit", this.state)
         this.scheduleUpdateHandler(this.state);
     }
-
     render() {
-
-        return null;
-
         return (
             <>
                 <Nav />
@@ -171,17 +150,3 @@ class UpdatedPage extends React.Component {
         )
     }
 }
-
-
-export default UpdatedPage
-
-
-// export async function getServerSideProps(context) {
-//     const response = await fetch(`https://my-medication-assistant.herokuapp.com/api/v1/scheduler/${context.params.id}`);
-//     const schedule = await response.json();
-//     return {
-//         props: {
-//             schedule
-//         }
-//     }
-// }

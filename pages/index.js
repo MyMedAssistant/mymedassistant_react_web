@@ -1,7 +1,14 @@
+import Layout from '../components/Layout';
+import Form from '../components/Form';
+
+
 export default function Login() {
   return (
     <div className = "login">
-      <h1>This is Login Page</h1>
+      <Layout title="Sign In">
+            <h1>Sign In</h1>
+            <Form />
+      </Layout>
       <style jsx>{`
       .login {
         font: 35px Helvetica, Arial, sans-serif;

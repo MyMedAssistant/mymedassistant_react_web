@@ -3,9 +3,13 @@ import Footer from '../components/Footer'
 import style from '../scss/MedSchedule.module.scss'
 import MedForm from '../components/MedForm'
 import React, { useContext } from 'react'
-import AppContext from '../components/AppContext';
+import AppContext from '../components/AppContext'
 import axios from 'axios'
 import Router from 'next/router';
+import Layout from '../components/Layout'
+
+// const url = 'http://localhost:8000/api/v1/scheduler/'
+
 
 export default function AddMedForm() {
 
@@ -25,6 +29,8 @@ export default function AddMedForm() {
             return ret;
         }
         schedule['next_dosage'] = dateAdd(schedule['last'], 'hour', schedule['hours']);
+        // schedule['dosage_count']=100;
+
         // const response = await axios.post(url, schedule);
         // const savedSchedules = response.data;
         // const updatedMedSchedules = this.state.med_schedules.concat(savedSchedules);
@@ -42,6 +48,7 @@ export default function AddMedForm() {
     return (
         <>
             <div>
+              <Layout />
                 <Nav />
                 <main className={style.medschedule}>
                     <h1>Add Medication to Schedule</h1>

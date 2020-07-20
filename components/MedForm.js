@@ -11,6 +11,7 @@ export default class MedForm extends React.Component {
       medication:'',
       dosage:'',
       hours:24,
+      dosage_count:0,
       start:new Date(),
       next_dosage:'',
       last:'',

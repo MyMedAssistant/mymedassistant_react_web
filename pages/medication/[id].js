@@ -15,7 +15,7 @@ export default function ScheduleDetail() {
 
     async function deleteHandler() {
         await deleteSchedule(router.query.id);
-        router.push('/schedule');
+        // router.push('/schedule');
     }
 
 

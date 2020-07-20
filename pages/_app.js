@@ -28,7 +28,7 @@ export default class MyApp extends App {
                 access,
             });
         } else {
-            Router.push('/signin');
+            Router.push('/');
         }
 
     };
@@ -40,8 +40,8 @@ export default class MyApp extends App {
 
         // If you want to store values in localStorage, here's how
 
-        // localStorage.setItem('coolapp-user', username);
-        // localStorage.setItem('coolapp-token', tokenInfo.access);
+        localStorage.setItem('coolapp-user', username);
+        localStorage.setItem('coolapp-token', tokenInfo.access);
 
 
         this.setState(
@@ -69,7 +69,7 @@ export default class MyApp extends App {
             access: null,
             refresh: null,
         });
-        Router.push('/signin');
+        Router.push('/');
     };
 
 
@@ -115,7 +115,9 @@ export default class MyApp extends App {
 
         this.setState({
             schedules: this.state.schedules.filter(item => item.id !== id)
-        })
+        },
+        ()=>{Router.push('/schedule')}
+        )
 
     }
 
@@ -132,9 +134,22 @@ export default class MyApp extends App {
         const response = await axios.post(url, schedule, config);
 
         console.log(response.data);
-
+        //token can be expired so add refresh token here
         this.setState({
             schedules: this.state.schedules.concat(response.data)
+        })
+    }
+
+    updateSchedule = async (schedule) => {
+        const accessToken = this.state.access;
+        let url = API_URL + 'scheduler/' + schedule.id;
+        let config = {
+            headers: { 'Authorization': "Bearer " + accessToken }
+        };
+        const response = await axios.put(url, schedule, config);
+        console.log(response.data);
+        this.setState({
+            schedules: this.state.schedules.map(item => item.id == schedule.id ? response.data : item)
         })
     }
 
@@ -192,6 +207,7 @@ export default class MyApp extends App {
                 schedules: this.state.schedules,
                 deleteSchedule: this.deleteSchedule,
                 createSchedule: this.createSchedule,
+                updateSchedule: this.updateSchedule,
             }}>
                 <Component {...pageProps} />
             </AppContext.Provider>

@@ -23,7 +23,7 @@ const Layout = props => {
                                 Sign Out
                         </button>
                             <Link href="/"><button className="btn">Home</button></Link>
-                            <h1>{user}'s Recipes</h1>
+                            <h1>Welcome {user}</h1>
                         </>
                     )}
 
