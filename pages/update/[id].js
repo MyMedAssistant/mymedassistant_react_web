@@ -40,7 +40,6 @@ class UpdatePageForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     async scheduleUpdateHandler(schedule) {
-        console.log("checking schedule in updatehandler", schedule)
         function dateAdd(date, interval, units) {
             if (!(date instanceof Date))
                 return undefined;
@@ -52,9 +51,6 @@ class UpdatePageForm extends React.Component {
             return ret;
         }
         schedule['next_dosage'] = dateAdd(schedule['last'], 'hour', schedule['hours']);
-        console.log("checking schedule in updatehandler after updating it", schedule)
-        // const response = await axios.put(url + this.props.schedule.id, schedule);
-        // const savedSchedule = response.data;
         await this.props.onUpdate(schedule);
         Router.push('/schedule');
     }
@@ -91,7 +87,6 @@ class UpdatePageForm extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         this.setState({ user: '', medication: '', dosage: '', hours: '', start: '', next_dosage: '', last: '', end: '', user_id_medication: '' });
-        console.log("this is state in submit", this.state)
         this.scheduleUpdateHandler(this.state);
     }
     render() {

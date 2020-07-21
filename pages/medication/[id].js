@@ -8,16 +8,14 @@ import AppContext from '../../components/AppContext';
 
 
 export default function ScheduleDetail() {
-
     const router = useRouter();
 
     const { schedules, deleteSchedule } = useContext(AppContext);
 
-    async function deleteHandler() {
-        await deleteSchedule(router.query.id);
-        // router.push('/schedule');
+    async function deleteHandler(id) {
+        await deleteSchedule(id);
+        Router.push('/schedule');
     }
-
 
     const schedule = schedules.find(item => item.id == router.query.id)
 

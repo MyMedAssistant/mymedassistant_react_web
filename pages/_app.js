@@ -26,6 +26,7 @@ export default class MyApp extends App {
             this.setState({
                 user,
                 access,
+                
             });
         } else {
             Router.push('/');
@@ -96,6 +97,9 @@ export default class MyApp extends App {
         })
 
         // Update localstorage as well if desired
+        console.log("attempted updating the local storage with refresh token by Vij")
+
+        localStorage.setItem('coolapp-token', tokenInfo.access);
 
 
         return response.data.access;
@@ -116,7 +120,7 @@ export default class MyApp extends App {
         this.setState({
             schedules: this.state.schedules.filter(item => item.id !== id)
         },
-        ()=>{Router.push('/schedule')}
+        // ()=>{Router.push('/schedule')}
         )
 
     }
@@ -143,11 +147,35 @@ export default class MyApp extends App {
     updateSchedule = async (schedule) => {
         const accessToken = this.state.access;
         let url = API_URL + 'scheduler/' + schedule.id;
+
         let config = {
             headers: { 'Authorization': "Bearer " + accessToken }
         };
+
         const response = await axios.put(url, schedule, config);
-        console.log(response.data);
+
+        console.log("update response status", response.status)
+
+        if (response.status !== 200) {
+
+            const refreshToken = this.state.refresh;
+
+            accessToken = await this.refresh(refreshToken);
+
+            config.headers.Authorization = "Bearer " + accessToken;
+
+            response = await axios.put(url, schedule, config);
+
+            console.log('try again with refreshed token', response.status)
+
+            if (response.status == 200) {
+                this.setState({ access: accessToken })
+            } else {
+                console.error('let user know that somethings broken')
+            }
+        }
+
+        console.log("update schedule response data: ", response.data);
         this.setState({
             schedules: this.state.schedules.map(item => item.id == schedule.id ? response.data : item)
         })
